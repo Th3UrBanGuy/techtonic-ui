@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import TectonicLogo from './TectonicLogo';
 
 const Footer = () => (
   <footer className="bg-slate-50 dark:bg-black border-t border-slate-200 dark:border-gray-800 py-12 px-6 relative overflow-hidden transition-colors duration-500">
@@ -8,11 +9,7 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
       <div className="col-span-1 md:col-span-1">
         <Link to="/" className="block mb-6">
-          <img 
-            src="https://i.postimg.cc/1zYVVX5M/techtonic-dark.png" 
-            alt="Techtonic Industries" 
-            className="h-9 w-auto object-contain invert dark:invert-0 transition-all duration-300" 
-          />
+          <TectonicLogo />
         </Link>
         <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed">
           Architecting the substrate of the future through integrated software, security, and robotic solutions.

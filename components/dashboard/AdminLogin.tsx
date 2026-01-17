@@ -47,7 +47,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
                         >
                             <Hexagon className="w-10 h-10 text-cyan-400" />
                         </motion.div>
-                        <h2 className="text-3xl font-bold text-white tracking-tight">TECHTONIC PORTAL</h2>
+                        <h2 className="text-3xl font-bold text-white tracking-tight">TECTONIC PORTAL</h2>
                         <p className="text-cyan-400/60 text-sm mt-2 font-mono">SECURE ACCESS REQUIRED</p>
                     </div>
 

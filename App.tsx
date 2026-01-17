@@ -13,9 +13,11 @@ import Portfolio from './pages/Portfolio';
 import Company from './pages/Company';
 import Contact from './pages/Contact';
 import Dashboard from './pages/Dashboard';
+import Loader from './components/Loader';
 
 const ContentWrapper = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
   const isDashboard = location.pathname === '/dashboard';
 
@@ -31,6 +33,14 @@ const ContentWrapper = () => {
     }
   }, []);
 
+  // Show loader on initial load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Toggle Handler
   const toggleTheme = () => {
     if (theme === 'dark') {
@@ -43,6 +53,10 @@ const ContentWrapper = () => {
       localStorage.setItem('techtonic-theme', 'dark');
     }
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white dark:bg-dark-bg dark:text-gray-100 transition-colors duration-500">
