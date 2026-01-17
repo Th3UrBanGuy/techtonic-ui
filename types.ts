@@ -9,6 +9,15 @@ export interface Wing {
   color: string;
   techStack: string[];
   features: string[];
+  teamName?: string;
+  teamLogo?: string;
+  teamSubtitle?: string;
+  teamPurpose?: string;
+  teamTimeline?: Array<{
+    year: string;
+    event: string;
+  }>;
+  teamAchievements?: string[];
 }
 
 export interface Project {

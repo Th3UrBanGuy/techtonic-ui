@@ -83,7 +83,7 @@ const Company = () => {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto"
             >
-                Techtonic isn't just a company; it's a convergence of specialized intelligence. 
+                Tectonic isn't just a company; it's a convergence of specialized intelligence. 
                 Founded on the belief that the future belongs to those who build it, we unify 
                 software, security, and robotics into a singular, evolutionary force.
             </motion.p>

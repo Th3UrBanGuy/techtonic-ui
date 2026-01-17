@@ -1,6 +1,6 @@
-import { 
-  Code, Shield, Bot, Briefcase, 
-  Globe, Server, Cpu, Zap 
+import {
+  Code, Shield, Bot, Briefcase,
+  Globe, Server, Cpu, Zap
 } from 'lucide-react';
 import { Wing, Project, TeamMember, Milestone } from './types';
 
@@ -13,7 +13,24 @@ export const WINGS: Wing[] = [
     icon: Code,
     color: 'text-cyan-500',
     techStack: ['React', 'Node.js', 'AWS', 'Docker', 'GraphQL'],
-    features: ['Custom ERP Solutions', 'SaaS Development', 'Cloud Migration']
+    features: ['Custom ERP Solutions', 'SaaS Development', 'Cloud Migration'],
+    teamName: 'CODEX',
+    teamLogo: 'https://i.ibb.co.com/fVNm58bM/codex.png',
+    teamSubtitle: 'Software Development Team',
+    teamPurpose: 'CODEX is an elite software development team dedicated to crafting innovative digital solutions. We specialize in building scalable, cloud-native applications that transform businesses and drive digital excellence through cutting-edge technologies and best practices.',
+    teamTimeline: [
+      { year: '2023', event: 'Team Formation & First Enterprise Project' },
+      { year: '2024', event: 'Cloud Migration Success - 50+ Clients' },
+      { year: '2025', event: 'Launch of Proprietary SaaS Platform' },
+      { year: '2026', event: 'AI-Powered Development Tools Release' }
+    ],
+    teamAchievements: [
+      '🏆 Best Software Team - Tech Excellence Awards 2024',
+      '⚡ 99.9% Uptime Achievement across all projects',
+      '🚀 Deployed 100+ production applications',
+      '💡 Created 5 open-source frameworks',
+      '🌟 5-star client satisfaction rating'
+    ]
   },
   {
     id: 'security',
@@ -23,7 +40,24 @@ export const WINGS: Wing[] = [
     icon: Shield,
     color: 'text-orange-500',
     techStack: ['Kali Linux', 'Python', 'Metasploit', 'SentinelOne'],
-    features: ['Security Audits', 'Threat Intelligence', 'Zero Trust Architecture']
+    features: ['Security Audits', 'Threat Intelligence', 'Zero Trust Architecture'],
+    teamName: 'Guardian Protocol',
+    teamLogo: 'https://via.placeholder.com/400x400/FF6B35/FFFFFF?text=GP',
+    teamSubtitle: 'Cybersecurity Defense Team',
+    teamPurpose: 'Guardian Protocol is an elite cybersecurity team committed to protecting digital assets and infrastructure. We specialize in advanced threat detection, penetration testing, and implementing zero-trust security architectures that safeguard organizations from evolving cyber threats.',
+    teamTimeline: [
+      { year: '2023', event: 'Team Formation & First Security Audit' },
+      { year: '2024', event: 'Prevented 200+ Cyber Attacks' },
+      { year: '2025', event: 'Zero Trust Implementation - 30+ Enterprises' },
+      { year: '2026', event: 'AI-Powered Threat Detection System' }
+    ],
+    teamAchievements: [
+      '🛡️ Best Security Team - CyberSec Awards 2024',
+      '🔒 100% Success Rate in Penetration Tests',
+      '⚡ Real-time threat detection in 15+ countries',
+      '🎯 Certified Ethical Hackers (CEH) Team',
+      '🏆 National Cybersecurity Excellence Award'
+    ]
   },
   {
     id: 'robotics',
@@ -33,7 +67,23 @@ export const WINGS: Wing[] = [
     icon: Bot,
     color: 'text-purple-500',
     techStack: ['ROS', 'C++', 'Computer Vision', 'IoT'],
-    features: ['Industrial Automation', 'Autonomous Drones', 'Smart Manufacturing']
+    features: ['Industrial Automation', 'Autonomous Drones', 'Smart Manufacturing'],
+    teamName: 'Robo Avengers',
+    teamLogo: 'https://i.ibb.co.com/vvMznZjR/Robo-Avengers.png',
+    teamPurpose: 'Robo Avengers is dedicated to pioneering IoT-based robotics research and development. We focus on creating intelligent automation solutions that bridge the physical and digital worlds, empowering industries and communities through cutting-edge robotic systems.',
+    teamTimeline: [
+      { year: '2024', event: 'Team Formation & First Robot Prototype' },
+      { year: '2025', event: 'Regional Robotics Competition Winner' },
+      { year: '2026', event: 'IoT Integration & Smart Manufacturing Project' },
+      { year: '2027', event: 'Autonomous Drone Fleet Development' }
+    ],
+    teamAchievements: [
+      '🏆 1st Place - National Robotics Championship 2025',
+      '🎖️ Best Innovation Award - IoT Expo 2025',
+      '🚀 Successfully deployed 15+ automation solutions',
+      '📚 Published 8 research papers on autonomous systems',
+      '🤝 Partnership with 12+ industrial clients'
+    ]
   },
   {
     id: 'consultancy',
@@ -43,7 +93,24 @@ export const WINGS: Wing[] = [
     icon: Briefcase,
     color: 'text-emerald-500',
     techStack: ['Big Data', 'BI Tools', 'Agile', 'Six Sigma'],
-    features: ['Digital Transformation', 'IT Strategy', 'Market Analysis']
+    features: ['Digital Transformation', 'IT Strategy', 'Market Analysis'],
+    teamName: 'Nexus Advisors',
+    teamLogo: 'https://via.placeholder.com/400x400/10B981/FFFFFF?text=NA',
+    teamSubtitle: 'Strategic Technology Consultants',
+    teamPurpose: 'Nexus Advisors is a strategic technology consulting team that guides enterprises through complex digital transformations. We combine deep technical expertise with business acumen to deliver actionable insights and roadmaps that drive sustainable growth and competitive advantage.',
+    teamTimeline: [
+      { year: '2022', event: 'Consultancy Launch & First Client' },
+      { year: '2023', event: 'Digital Transformation - 25+ Companies' },
+      { year: '2024', event: 'Strategic Partnership with Fortune 500' },
+      { year: '2025', event: 'AI Strategy Framework Development' }
+    ],
+    teamAchievements: [
+      '💼 Top Consulting Firm - Tech Advisory 2024',
+      '📈 $50M+ in client cost savings',
+      '🌐 Served clients in 20+ countries',
+      '🎓 Published 15+ industry whitepapers',
+      '⭐ 98% Client Retention Rate'
+    ]
   }
 ];
 
