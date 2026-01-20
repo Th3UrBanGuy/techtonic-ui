@@ -1,9 +1,14 @@
 import {
   Code, Shield, Bot, Briefcase,
-  Globe, Server, Cpu, Zap
+  Globe, Server, Cpu, Zap,
+  Layers, Cloud, Network, FlaskConical,
+  Activity, CheckCircle2
 } from 'lucide-react';
-import { Wing, Project, TeamMember, Milestone, Partnership } from './types';
+import { Wing, Project, TeamMember, Milestone, Partnership, TechStackItem, RoadmapItem } from './types';
 
+// =========================================
+// GLOBAL / SHARED ENTITIES
+// =========================================
 
 export const WINGS: Wing[] = [
   {
@@ -195,7 +200,6 @@ export const TEAM: TeamMember[] = [
   }
 ];
 
-
 export const TIMELINE: Milestone[] = [
   { year: '2025', title: 'The Genesis', description: 'Techtonic consolidates 4 independent entities into one ecosystem.' },
   { year: '2026', title: 'AI Integration', description: 'Launch of proprietary Generative AI engine for enterprise code.' },
@@ -253,3 +257,297 @@ export const PARTNERSHIPS: Partnership[] = [
     since: '2022'
   }
 ];
+
+// =========================================
+// PAGE 1: HOME PAGE
+// =========================================
+
+export const HOME_CONTENT = {
+  hero: {
+    title: "TECTONIC",
+    subtitle: "SHIFT",
+    description: "Architecting tomorrow's infrastructure. We bridge the gap between human potential and machine intelligence.",
+    buttons: {
+      primary: "EXPLORE ECOSYSTEM",
+      secondary: "R&D LAB ACCESS"
+    }
+  },
+  wings: {
+    title: "OUR WINGS"
+  },
+  projects: {
+    title: "FEATURED PROJECTS",
+    description: "Real-world solutions delivering measurable impact",
+    viewAll: "View All Projects"
+  },
+  partnerships: {
+    title: "OUR PARTNERSHIPS",
+    description: "Collaborating with industry leaders to deliver excellence",
+    stats: [
+      { value: "6+", label: "Strategic Partners", color: "from-cyan-600 to-purple-600" },
+      { value: "4", label: "Technology Sectors", color: "from-purple-600 to-orange-600" },
+      { value: "99.9%", label: "Service Uptime", color: "from-orange-600 to-emerald-600" },
+      { value: "24/7", label: "Global Support", color: "from-emerald-600 to-cyan-600" }
+    ]
+  }
+};
+
+// =========================================
+// PAGE 2: COMPANY PAGE (ABOUT)
+// =========================================
+
+export const COMPANY_CONTENT = {
+  hero: {
+    badge: "HUMAN-CENTRIC TECHNOLOGY",
+    title: {
+      prefix: "THE ARCHITECTS",
+      highlight: "OF TOMORROW"
+    },
+    description: "Tectonic isn't just a company; it's a convergence of specialized intelligence. Founded on the belief that the future belongs to those who build it, we unify software, security, and robotics into a singular, evolutionary force."
+  },
+  stats: [
+    { label: "Founded", value: "2018" },
+    { label: "Global Offices", value: "12" },
+    { label: "Engineers", value: "450+" },
+    { label: "Patents", value: "84" }
+  ],
+  mission: {
+    title: "OUR MISSION",
+    text1: "We operate at the intersection of imagination and engineering. Our mandate is simple:",
+    highlight: "to dismantle the limitations of current infrastructure.",
+    text2: "From the microscopic precision of our code to the kinetic power of our robotics, every Techtonic innovation is designed to be scalable, secure, and sustainable. We don't just adapt to change; we author it.",
+    codeBlock: {
+      identity: "System.Identity.Load()",
+      visionVariable: "vision",
+      visionValue: "Limitless",
+      valuesVariable: "values",
+      values: ["Integrity", "Precision", "Evolution"]
+    }
+  },
+  certifications: {
+    title: "CERTIFICATIONS & RECOGNITION"
+  }
+};
+
+export const COMPANY_ACHIEVEMENTS = [
+  {
+    title: "ISO 27001 Certified",
+    issuer: "International Standards Organization",
+    year: "2023",
+    color: "text-emerald-500 dark:text-emerald-400",
+    border: "hover:border-emerald-500/50"
+  },
+  {
+    title: "Top 50 Innovators",
+    issuer: "TechCrunch Disrupt",
+    year: "2024",
+    color: "text-yellow-500 dark:text-yellow-400",
+    border: "hover:border-yellow-500/50"
+  },
+  {
+    title: "Carbon Neutral",
+    issuer: "Global Climate Initiative",
+    year: "2022",
+    color: "text-blue-500 dark:text-blue-400",
+    border: "hover:border-blue-500/50"
+  },
+  {
+    title: "Enterprise Security Award",
+    issuer: "CyberDefense Magazine",
+    year: "2023",
+    color: "text-purple-500 dark:text-purple-400",
+    border: "hover:border-purple-500/50"
+  }
+];
+
+// =========================================
+// PAGE 3: PORTFOLIO PAGE
+// =========================================
+
+export const PORTFOLIO_CONTENT = {
+  header: {
+    badge: "Our Work",
+    title: "CASE STUDIES",
+    description: "Engineering success through precision. Real-world solutions that deliver measurable impact."
+  },
+  filters: ['All', 'Software', 'Security', 'Robotics', 'Consultancy'],
+  emptyState: {
+    title: "No projects found",
+    description: "Try selecting a different filter category"
+  }
+};
+
+// =========================================
+// PAGE 4: INNOVATION PAGE (R&D)
+// =========================================
+
+export const INNOVATION_CONTENT = {
+  hero: {
+    badge: "Innovation Lab",
+    title: "INNOVATION & R&D",
+    description: "Pushing boundaries with cutting-edge technology and experimental research",
+    buttons: {
+      newProject: "New Project",
+      exportData: "Export Data"
+    }
+  },
+  sections: {
+    techStack: {
+      title: "Tech Ecosystem",
+      badge: "99.9% Uptime"
+    },
+    roadmap: {
+      title: "Future Roadmap"
+    }
+  },
+  stats: [
+    {
+      label: "Active Experiments",
+      value: "42",
+      change: "+3",
+      iconName: "FlaskConical",
+      color: "purple"
+    },
+    {
+      label: "Compute Power",
+      value: "8.4",
+      unit: "PFLOPS",
+      iconName: "Activity",
+      color: "cyan"
+    },
+    {
+      label: "Patents Filed",
+      value: "128",
+      status: "Verified",
+      iconName: "CheckCircle2",
+      color: "green"
+    }
+  ]
+};
+
+export const INNOVATION_TECH_STACK: TechStackItem[] = [
+  {
+    id: 'tech_1',
+    name: 'MERN STACK',
+    version: 'V_8.4',
+    status: 'SCALING',
+    iconName: 'Layers',
+    color: 'text-cyan-400',
+    order: 0
+  },
+  {
+    id: 'tech_2',
+    name: 'NEXT.JS',
+    version: 'V_14',
+    status: 'OPTIMIZED',
+    iconName: 'Zap',
+    color: 'text-white',
+    order: 1
+  },
+  {
+    id: 'tech_3',
+    name: 'CLOUD NATIVE',
+    version: 'TERRAFORM',
+    status: 'DEPLOYED',
+    iconName: 'Cloud',
+    color: 'text-blue-400',
+    order: 2
+  },
+  {
+    id: 'tech_4',
+    name: 'RUST CORE',
+    version: 'LOW_LATENCY',
+    status: 'STABLE',
+    iconName: 'Cpu',
+    color: 'text-orange-400',
+    order: 3
+  },
+  {
+    id: 'tech_5',
+    name: 'GRAPH DB',
+    version: 'NEO4J',
+    status: 'CONNECTED',
+    iconName: 'Network',
+    color: 'text-purple-400',
+    order: 4
+  },
+  {
+    id: 'tech_6',
+    name: 'ROBOTICS OS',
+    version: 'ROS_2',
+    status: 'ACTIVE',
+    iconName: 'Bot',
+    color: 'text-green-400',
+    order: 5
+  }
+];
+
+export const INNOVATION_ROADMAP: RoadmapItem[] = [
+  {
+    id: 'roadmap_1',
+    refId: 'R-2025-A',
+    quarter: 'Q1 2025',
+    title: 'QUANTUM ENCRYPTION',
+    description: 'Post-quantum cryptographic layers for the core cyber infrastructure.',
+    progress: 65,
+    status: 'IN_PROGRESS',
+    colorTheme: 'from-blue-600/20 to-blue-900/10',
+    order: 0
+  },
+  {
+    id: 'roadmap_2',
+    refId: 'B-2026-X',
+    quarter: 'Q4 2026',
+    title: 'BIOTECH INTERFACES',
+    description: 'Neural link protocols for seamless man-machine integration in robotic wings.',
+    progress: 15,
+    status: 'INITIAL_CONCEPT',
+    colorTheme: 'from-purple-600/20 to-purple-900/10',
+    order: 1
+  },
+  {
+    id: 'roadmap_3',
+    refId: 'S-2027-V',
+    quarter: '2027 PROJECT',
+    title: 'AUTONOMOUS COLONIES',
+    description: 'Self-repairing software architecture with genetic algorithmic evolution.',
+    progress: 0,
+    status: 'SCHEDULED',
+    colorTheme: 'from-gray-700/20 to-gray-900/10',
+    order: 2
+  },
+  {
+    id: 'roadmap_4',
+    refId: 'G-2028-Z',
+    quarter: '2028 VIS',
+    title: 'GENETIC ALGO',
+    description: 'Synthesis of biological data storage with silicon based processors.',
+    progress: 0,
+    status: 'HYPOTHETICAL',
+    colorTheme: 'from-gray-700/20 to-gray-900/10',
+    order: 3
+  }
+];
+
+// =========================================
+// PAGE 5: CONTACT PAGE
+// =========================================
+
+export const CONTACT_INFO = {
+  address: {
+    street: "Chattogram, Bangladesh",
+    sector: "Dhaka, Bangladesh",
+    coordinates: "Lat: 23.8103, Long: 90.4125"
+  },
+  contact: {
+    email: "support@techt0nic.com",
+    phone: "+880 171-1234567"
+  },
+  socials: {
+    linkedin: "https://linkedin.com/company/techtonic",
+    facebook: "https://facebook.com/techtonic.official",
+    instagram: "https://instagram.com/techtonic",
+    twitter: "https://twitter.com/techtonic",
+    github: "https://github.com/techtonic"
+  }
+};

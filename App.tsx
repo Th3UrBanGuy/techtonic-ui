@@ -4,6 +4,7 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 // Layout
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import SystemStatusWrapper from './components/SystemStatusWrapper';
 
 // Pages
 import Home from './pages/Home';
@@ -13,11 +14,10 @@ import Portfolio from './pages/Portfolio';
 import Company from './pages/Company';
 import Contact from './pages/Contact';
 import Dashboard from './pages/Dashboard';
-import Loader from './components/Loader';
+import Loader from './components/Loader'; // Kept if needed, but SystemStatusWrapper handles main load
 
 const ContentWrapper = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
-  const [loading, setLoading] = useState(true);
   const location = useLocation();
   const isDashboard = location.pathname === '/dashboard';
 
@@ -33,14 +33,6 @@ const ContentWrapper = () => {
     }
   }, []);
 
-  // Show loader on initial load
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
   // Toggle Handler
   const toggleTheme = () => {
     if (theme === 'dark') {
@@ -54,28 +46,26 @@ const ContentWrapper = () => {
     }
   };
 
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
-    <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white dark:bg-dark-bg dark:text-gray-100 transition-colors duration-500">
-      {!isDashboard && <Navbar theme={theme} toggleTheme={toggleTheme} />}
-      {/* Added flex-grow to ensure footer pushes down and pt-0 to allow hero sections to touch top if needed, 
-          but ensured z-index layering is correct */}
-      <main className={`flex-grow pt-0 relative z-0 ${isDashboard ? 'h-screen' : ''}`}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/wings" element={<Wings />} />
-          <Route path="/innovation" element={<Innovation />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/company" element={<Company />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
-      </main>
-      {!isDashboard && <Footer />}
-    </div>
+    <SystemStatusWrapper>
+      <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white dark:bg-dark-bg dark:text-gray-100 transition-colors duration-500">
+        {!isDashboard && <Navbar theme={theme} toggleTheme={toggleTheme} />}
+        {/* Added flex-grow to ensure footer pushes down and pt-0 to allow hero sections to touch top if needed, 
+            but ensured z-index layering is correct */}
+        <main className={`flex-grow pt-0 relative z-0 ${isDashboard ? 'h-screen' : ''}`}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/wings" element={<Wings />} />
+            <Route path="/innovation" element={<Innovation />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/company" element={<Company />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </main>
+        {!isDashboard && <Footer />}
+      </div>
+    </SystemStatusWrapper>
   );
 };
 

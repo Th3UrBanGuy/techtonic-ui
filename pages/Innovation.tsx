@@ -1,249 +1,490 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, useAnimation } from 'framer-motion';
 import {
-  FlaskConical, ArrowRight, Download, Plus,
+  FlaskConical, ArrowRight,
   Layers, Zap, Cloud, Cpu, Network, Bot,
-  Lock, Calendar, Activity, CheckCircle2, ChevronLeft, ChevronRight,
-  Code, Server, Database, Smartphone, Globe, Shield, Zap as ZapIcon
+  Lock, Calendar, Activity, CheckCircle2,
+  Code, Server, Database, Smartphone, Globe, Shield, Sparkles, Rocket, Star
 } from 'lucide-react';
 import { TechStackItem, RoadmapItem } from '../types';
-import { getTechStack, getRoadmap } from '../services/contentStorage';
+import { INNOVATION_TECH_STACK, INNOVATION_ROADMAP, INNOVATION_CONTENT } from '../constants';
 
-// Icon mapping for dynamic loading
+// Icon mapping
 const iconMap: Record<string, any> = {
-  Layers, Zap: ZapIcon, Cloud, Cpu, Network, Bot, Code, Server, Database,
+  Layers, Zap, Cloud, Cpu, Network, Bot, Code, Server, Database,
   Smartphone, Globe, Shield, FlaskConical
 };
 
 const Innovation = () => {
-  const [techStack, setTechStack] = useState<TechStackItem[]>([]);
-  const [roadmap, setRoadmap] = useState<RoadmapItem[]>([]);
+  const techStack = INNOVATION_TECH_STACK;
+  const roadmap = INNOVATION_ROADMAP;
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    setTechStack(getTechStack());
-    setRoadmap(getRoadmap());
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-
-
   return (
-    <div className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#050505] text-slate-900 dark:text-white relative overflow-hidden font-sans transition-colors duration-500">
-      {/* Background Dots */}
-      <div className="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none"
-        style={{ backgroundImage: 'radial-gradient(#333 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
+    <div className="min-h-screen pt-24 pb-12 bg-slate-50 dark:bg-[#050505] relative overflow-hidden">
+      {/* Enhanced Animated Background with Multiple Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/20 dark:bg-purple-500/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.6, 0.3],
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/20 dark:bg-cyan-500/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1.3, 1, 1.3],
+            opacity: [0.6, 0.3, 0.6],
+            x: [0, -100, 0],
+            y: [0, -50, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 w-96 h-96 bg-orange-500/15 dark:bg-orange-500/8 rounded-full blur-3xl"
+          animate={{
+            scale: [1.1, 1.4, 1.1],
+            opacity: [0.4, 0.7, 0.4],
+            rotate: [0, 180, 360],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+      {/* Floating Particles */}
+      <FloatingParticles />
 
-        {/* Header Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-slate-200 dark:border-gray-800 pb-4">
-          <div className="text-[10px] md:text-xs font-mono text-slate-500 dark:text-gray-500 uppercase tracking-widest flex items-center gap-2">
-            <span className="text-slate-600 dark:text-gray-600">HUB</span> /
-            <span className="text-slate-600 dark:text-gray-600">INNOVATION CENTER</span> /
-            <span className="text-brand-600 dark:text-brand-500">R&D LAB</span>
-            <span className="text-slate-700 dark:text-gray-700">// TERMINAL V.2.04</span>
-          </div>
-          <div className="flex items-center gap-6 text-[9px] md:text-[10px] font-mono text-slate-500 dark:text-gray-400">
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
-              SYSTEM: ACTIVE
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        {/* Enhanced Hero Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16 text-center relative"
+        >
+          {/* Animated Badge */}
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-cyan-100 dark:from-purple-900/30 dark:to-cyan-900/30 rounded-full border border-purple-300 dark:border-purple-700/50 mb-6 relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+            <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <span className="text-sm font-mono text-purple-700 dark:text-purple-300 uppercase tracking-wider relative z-10">{INNOVATION_CONTENT.hero.badge}</span>
+          </motion.div>
+
+          {/* Animated Title with Gradient */}
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 relative"
+          >
+            <span className="bg-gradient-to-r from-purple-600 via-cyan-600 to-orange-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+              {INNOVATION_CONTENT.hero.title}
             </span>
-            <span>LATENCY: 12ms</span>
-            <span>CORE: 98%</span>
-          </div>
-        </div>
+          </motion.h1>
 
-        {/* Title Area */}
-        <div className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
-          <div>
-            <h1 className="text-5xl md:text-7xl font-mono font-black mb-6 tracking-tighter uppercase leading-[0.9] text-slate-900 dark:text-white">
-              INNOVATION<br />& R&D LAB
-            </h1>
-            <p className="text-slate-600 dark:text-gray-400 max-w-2xl text-base md:text-lg font-light leading-relaxed">
-              Experimental Phase: Variant 2. Focus on synthesis of mastered infrastructures and future roadmap projection.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            <button className="group px-6 py-3 border border-slate-300 dark:border-gray-700 hover:border-slate-400 dark:hover:border-gray-500 text-xs font-mono font-bold uppercase tracking-wider rounded flex items-center gap-2 transition-all bg-slate-100 dark:bg-black hover:bg-slate-200 dark:hover:bg-gray-900 text-slate-900 dark:text-white">
-              <Download size={14} className="text-slate-500 dark:text-gray-500 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
-              EXPORT SCHEMATICS
-            </button>
-            <button className="group px-6 py-3 bg-blue-600 dark:bg-blue-700 hover:bg-blue-500 dark:hover:bg-blue-600 text-white text-xs font-mono font-bold uppercase tracking-wider rounded flex items-center gap-2 transition-all shadow-lg shadow-blue-500/20 dark:shadow-[0_0_20px_rgba(29,78,216,0.3)]">
-              <Plus size={14} />
-              NEW INITIATIVE
-            </button>
-          </div>
-        </div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-lg sm:text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto"
+          >
+            {INNOVATION_CONTENT.hero.description}
+          </motion.p>
 
-        {/* SECTION 1: TECH STACK */}
+
+        </motion.div>
+
+        {/* Tech Stack - Enhanced 3D Magnetic Cards */}
         <div className="mb-20">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-4 border-l-2 border-brand-500 pl-4">
-              <h2 className="text-2xl font-mono font-bold uppercase tracking-tight text-slate-900 dark:text-white">SYNTHESIZED ECOSYSTEM</h2>
-              <span className="text-slate-500 dark:text-gray-600 text-sm font-sans hidden md:inline-block">// MASTERED TECH STACK</span>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center justify-between mb-8"
+          >
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
+              {INNOVATION_CONTENT.sections.techStack.title}
+            </h2>
+            <div className="px-4 py-2 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 rounded-full border border-green-300 dark:border-green-700/50">
+              <span className="text-sm font-mono text-green-700 dark:text-green-400 flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                {INNOVATION_CONTENT.sections.techStack.badge}
+              </span>
             </div>
-            <span className="text-[10px] font-mono text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/20 px-2 py-1 rounded border border-blue-200 dark:border-blue-800">STABILITY: 99.9%</span>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6">
             {techStack.map((tech, i) => {
               const IconComponent = iconMap[tech.iconName] || Code;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group relative h-40"
-                >
-                  {/* Card Container */}
-                  <div className="absolute inset-0 bg-slate-50 dark:bg-[#0f0f0f] rounded-xl border border-slate-200 dark:border-gray-800 overflow-hidden transition-all duration-300 group-hover:border-slate-400 dark:group-hover:border-gray-600 group-hover:-translate-y-1 group-hover:shadow-lg dark:group-hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]">
-
-                    {/* Hover Grid Reveal */}
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"
-                      style={{
-                        backgroundImage: `linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)`,
-                        backgroundSize: '16px 16px'
-                      }}
-                    />
-
-                    {/* Color Glow Top Right */}
-                    <div className={`absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br ${tech.color.replace('text-', 'from-')}/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
-
-                    {/* Content Layout */}
-                    <div className="relative h-full p-5 flex flex-col justify-between z-10">
-                      {/* Header */}
-                      <div className="flex justify-between items-start">
-                        <div className={`p-2.5 rounded-lg bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800 ${tech.color} group-hover:bg-slate-100 dark:group-hover:bg-gray-800 group-hover:border-slate-300 dark:group-hover:border-gray-700 transition-all duration-300 shadow-sm`}>
-                          <IconComponent size={20} />
-                        </div>
-                        <div className={`w-1.5 h-1.5 rounded-full ${tech.color.replace('text-', 'bg-')} animate-pulse shadow-[0_0_8px_currentColor]`}></div>
-                      </div>
-
-                      {/* Footer Info */}
-                      <div>
-                        <h3 className="font-mono font-bold text-sm text-slate-700 dark:text-gray-300 mb-2 group-hover:text-slate-900 dark:group-hover:text-white transition-colors tracking-wide">{tech.name}</h3>
-                        <div className="flex items-center justify-between">
-                          <span className="text-[9px] font-mono text-slate-500 dark:text-gray-500 bg-slate-200 dark:bg-black/40 px-2 py-1 rounded border border-slate-300 dark:border-gray-800/50">{tech.version}</span>
-                          <span className={`text-[8px] font-mono uppercase tracking-widest font-bold opacity-50 group-hover:opacity-100 transition-opacity duration-300 ${tech.color}`}>
-                            {tech.status}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Animated Bottom Bar */}
-                    <div className={`absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500 ease-out ${tech.color.replace('text-', 'bg-')}`}></div>
-                  </div>
-                </motion.div>
-              )
+              return <EnhancedMagneticTechCard key={i} tech={tech} icon={IconComponent} index={i} />;
             })}
           </div>
         </div>
 
-        {/* SECTION 2: ROADMAP */}
+        {/* Roadmap - Enhanced Holographic Cards */}
         <div className="mb-20">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-4 border-l-2 border-brand-500 pl-4">
-              <h2 className="text-2xl font-mono font-bold uppercase tracking-tight text-slate-900 dark:text-white">FUTURE HORIZONS</h2>
-              <span className="text-slate-500 dark:text-gray-600 text-sm font-sans hidden md:inline-block">// 3D ROADMAP SCROLLER</span>
-            </div>
-            <div className="flex gap-2">
-              <button className="w-8 h-8 rounded-full border border-slate-300 dark:border-gray-800 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-gray-800 transition-colors text-slate-600 dark:text-gray-400"><ChevronLeft size={16} /></button>
-              <button className="w-8 h-8 rounded-full border border-slate-300 dark:border-gray-800 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-gray-800 transition-colors text-slate-600 dark:text-gray-400"><ChevronRight size={16} /></button>
-            </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center justify-between mb-8"
+          >
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
+              {INNOVATION_CONTENT.sections.roadmap.title}
+            </h2>
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            >
+              <Rocket className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            </motion.div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {roadmap.map((item, i) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1 }}
-                className={`relative h-[420px] rounded-2xl p-6 border border-slate-200 dark:border-gray-800 bg-gradient-to-b ${item.colorTheme} overflow-hidden group hover:border-slate-400 dark:hover:border-gray-600 transition-colors shadow-sm dark:shadow-none`}
-              >
-                <div className="flex justify-between items-start mb-12">
-                  <span className="text-[9px] font-mono text-slate-500 dark:text-gray-500 uppercase">REF: {item.refId}</span>
-                  {item.progress > 0 && (
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full shadow-[0_0_10px_#3b82f6]"></div>
-                  )}
-                </div>
-
-                <div className="mb-4">
-                  <span className="px-2 py-1 bg-blue-600 text-white text-[10px] font-mono font-bold rounded-sm uppercase tracking-wider">{item.quarter}</span>
-                </div>
-
-                <h3 className="text-3xl font-bold uppercase leading-none mb-4 break-words text-slate-900 dark:text-white">{item.title}</h3>
-                <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed mb-12 border-l border-slate-300 dark:border-gray-700 pl-3">
-                  {item.description}
-                </p>
-
-                <div className="absolute bottom-6 left-6 right-6">
-                  {item.progress > 0 ? (
-                    <>
-                      <div className="h-1 w-full bg-slate-200 dark:bg-gray-800 rounded-full mb-3 overflow-hidden">
-                        <div className="h-full bg-blue-500 rounded-full" style={{ width: `${item.progress}%` }}></div>
-                      </div>
-                      <div className="flex justify-between items-end">
-                        <span className="text-[10px] font-mono text-slate-500 dark:text-gray-300 uppercase">R&D PROGRESS: {item.progress}%</span>
-                        <ArrowRight size={16} className="text-blue-500" />
-                      </div>
-                    </>
-                  ) : (
-                    <div className="flex justify-between items-center border-t border-slate-300/50 dark:border-gray-700/50 pt-4">
-                      <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase">STATUS: {item.status.replace('_', ' ')}</span>
-                      {item.status === 'SCHEDULED' ? <Calendar size={16} className="text-slate-400 dark:text-gray-500" /> : <Lock size={16} className="text-slate-400 dark:text-gray-600" />}
-                    </div>
-                  )}
-                </div>
-              </motion.div>
+              <EnhancedHolographicCard key={item.id} item={item} index={i} />
             ))}
           </div>
         </div>
 
-        {/* SECTION 3: BOTTOM STATS */}
+        {/* Stats - Enhanced Animated Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-xl border border-slate-200 dark:border-gray-800 bg-slate-50 dark:bg-[#0a0a0a] flex items-center justify-between group hover:border-blue-400 dark:hover:border-blue-900/50 transition-colors shadow-sm dark:shadow-none">
-            <div>
-              <div className="text-[10px] font-mono text-slate-500 dark:text-gray-500 uppercase tracking-wider mb-1">Active Experiments</div>
-              <div className="text-4xl font-mono font-bold text-slate-900 dark:text-white flex items-baseline gap-2">
-                42 <span className="text-sm text-blue-500">+3</span>
-              </div>
-            </div>
-            <div className="w-12 h-12 rounded bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-500">
-              <FlaskConical size={24} />
-            </div>
-          </div>
+          {INNOVATION_CONTENT.stats.map((stat, i) => {
+            const Icon = iconMap[stat.iconName] || Activity;
+            return (
+              <EnhancedStatCard
+                key={i}
+                label={stat.label}
+                value={stat.value}
+                change={stat.change}
+                unit={stat.unit}
+                status={stat.status}
+                icon={Icon}
+                color={stat.color}
+                index={i}
+              />
+            );
+          })}
+        </div>
+      </div>
 
-          <div className="p-6 rounded-xl border border-slate-200 dark:border-gray-800 bg-slate-50 dark:bg-[#0a0a0a] flex items-center justify-between group hover:border-blue-400 dark:hover:border-blue-900/50 transition-colors shadow-sm dark:shadow-none">
-            <div>
-              <div className="text-[10px] font-mono text-slate-500 dark:text-gray-500 uppercase tracking-wider mb-1">Compute Allocation</div>
-              <div className="text-4xl font-mono font-bold text-slate-900 dark:text-white flex items-baseline gap-2">
-                8.4 <span className="text-sm text-slate-500 dark:text-gray-500">PFLOPS</span>
-              </div>
-            </div>
-            <div className="w-12 h-12 rounded bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-500">
-              <Activity size={24} />
-            </div>
-          </div>
+      <style>{`
+        @keyframes shimmer {
+          to { transform: translateX(200%); }
+        }
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        .animate-gradient {
+          animation: gradient 3s ease infinite;
+        }
+      `}</style>
+    </div>
+  );
+};
 
-          <div className="p-6 rounded-xl border border-slate-200 dark:border-gray-800 bg-slate-50 dark:bg-[#0a0a0a] flex items-center justify-between group hover:border-blue-400 dark:hover:border-blue-900/50 transition-colors shadow-sm dark:shadow-none">
-            <div>
-              <div className="text-[10px] font-mono text-slate-500 dark:text-gray-500 uppercase tracking-wider mb-1">Patent Pipeline</div>
-              <div className="text-4xl font-mono font-bold text-slate-900 dark:text-white flex items-baseline gap-2">
-                128 <span className="text-sm text-green-600 dark:text-green-500 font-bold uppercase text-[10px] tracking-wide">Verified</span>
-              </div>
-            </div>
-            <div className="w-12 h-12 rounded bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-500">
-              <CheckCircle2 size={24} />
+// Floating Particles Component
+const FloatingParticles = () => {
+  const particles = Array.from({ length: 20 }, (_, i) => i);
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {particles.map((i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1 h-1 bg-purple-500/30 dark:bg-purple-400/20 rounded-full"
+          initial={{
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+          }}
+          animate={{
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: Math.random() * 10 + 10,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Enhanced 3D Magnetic Tech Card
+const EnhancedMagneticTechCard = ({ tech, icon: Icon, index }: any) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["12deg", "-12deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current || window.innerWidth < 768) return;
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+    setIsHovered(false);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ delay: index * 0.04, duration: 0.5, type: "spring" }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      whileTap={{ scale: 0.95 }}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      className="group relative h-40 cursor-pointer"
+    >
+      {/* Multi-layer Glow Effect */}
+      <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${tech.color.replace('text-', 'from-')}/30 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 scale-110`} />
+      <div className={`absolute inset-0 rounded-2xl bg-gradient-to-tl ${tech.color.replace('text-', 'from-')}/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+      {/* Card */}
+      <div className="relative h-full p-5 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-2xl border-2 border-slate-200 dark:border-gray-700 group-hover:border-slate-300 dark:group-hover:border-gray-600 shadow-xl group-hover:shadow-2xl transition-all duration-500"
+        style={{ transform: "translateZ(50px)" }}
+      >
+        {/* Animated Shine Effect */}
+        <div className="absolute inset-0 rounded-2xl overflow-hidden">
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 dark:via-white/10 to-transparent"
+            animate={isHovered ? { x: ["-100%", "200%"] } : {}}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+        </div>
+
+        {/* Particle Effect on Hover */}
+        {isHovered && (
+          <motion.div
+            className="absolute top-2 right-2"
+            initial={{ scale: 0, rotate: 0 }}
+            animate={{ scale: 1, rotate: 360 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Star className={`w-4 h-4 ${tech.color}`} />
+          </motion.div>
+        )}
+
+        <div className="relative flex flex-col justify-between h-full">
+          <motion.div
+            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tech.color.replace('text-', 'from-')}/20 ${tech.color.replace('text-', 'to-')}/10 flex items-center justify-center ${tech.color} shadow-lg`}
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
+            <Icon size={24} />
+          </motion.div>
+
+          <div>
+            <h3 className="font-bold text-sm text-slate-900 dark:text-white mb-1 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-cyan-600 group-hover:bg-clip-text transition-all duration-300">
+              {tech.name}
+            </h3>
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-slate-500 dark:text-gray-400 font-mono">{tech.version}</span>
+              <motion.div
+                className={`w-2 h-2 rounded-full ${tech.color.replace('text-', 'bg-')}`}
+                animate={{ scale: [1, 1.3, 1], opacity: [1, 0.5, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
             </div>
           </div>
         </div>
-
       </div>
-    </div>
+    </motion.div>
+  );
+};
+
+// Enhanced Holographic Roadmap Card
+const EnhancedHolographicCard = ({ item, index }: any) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const controls = useAnimation();
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30, rotateX: -10 }}
+      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.6, type: "spring" }}
+      whileHover={{ scale: 1.03, y: -8, rotateX: 5 }}
+      whileTap={{ scale: 0.98 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="group relative h-96 rounded-3xl overflow-hidden cursor-pointer"
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      {/* Gradient Background with Animation */}
+      <motion.div
+        className={`absolute inset-0 bg-gradient-to-br ${item.colorTheme}`}
+        animate={isHovered ? { scale: 1.05 } : { scale: 1 }}
+        transition={{ duration: 0.5 }}
+      />
+
+      {/* Holographic Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+      {/* Animated Grid Pattern */}
+      <motion.div
+        className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-500"
+        style={{
+          backgroundImage: 'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)',
+          backgroundSize: '20px 20px'
+        }}
+        animate={isHovered ? { backgroundPosition: ["0px 0px", "20px 20px"] } : {}}
+        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Floating Sparkles */}
+      {isHovered && (
+        <>
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full"
+              initial={{ x: Math.random() * 100 + "%", y: "100%", opacity: 0 }}
+              animate={{ y: "-20%", opacity: [0, 1, 0] }}
+              transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }}
+            />
+          ))}
+        </>
+      )}
+
+      {/* Content */}
+      <div className="relative h-full p-6 flex flex-col justify-between" style={{ transform: "translateZ(30px)" }}>
+        <div>
+          <motion.div
+            className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full border border-white/30 mb-4"
+            whileHover={{ scale: 1.05 }}
+          >
+            <span className="text-xs font-mono text-white uppercase">{item.quarter}</span>
+          </motion.div>
+
+          <motion.h3
+            className="text-2xl font-black text-white mb-3 leading-tight"
+            animate={isHovered ? { x: [0, 5, 0] } : {}}
+            transition={{ duration: 0.5 }}
+          >
+            {item.title}
+          </motion.h3>
+          <p className="text-white/80 text-sm leading-relaxed">{item.description}</p>
+        </div>
+
+        {item.progress > 0 && (
+          <div>
+            <div className="h-2 bg-white/20 rounded-full overflow-hidden mb-2 backdrop-blur-sm">
+              <motion.div
+                className="h-full bg-white rounded-full shadow-lg shadow-white/50"
+                initial={{ width: 0 }}
+                animate={{ width: `${item.progress}%` }}
+                transition={{ duration: 1.5, delay: index * 0.1 + 0.5, ease: "easeOut" }}
+              />
+            </div>
+            <span className="text-xs text-white/70 font-mono">{item.progress}% Complete</span>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+};
+
+// Enhanced Animated Stat Card
+const EnhancedStatCard = ({ label, value, change, unit, status, icon: Icon, color, index }: any) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const colorMap = {
+    purple: { gradient: 'from-purple-500 to-indigo-500', glow: 'purple-500' },
+    cyan: { gradient: 'from-cyan-500 to-blue-500', glow: 'cyan-500' },
+    green: { gradient: 'from-green-500 to-emerald-500', glow: 'green-500' },
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }}
+      whileHover={{ scale: 1.03, y: -4 }}
+      whileTap={{ scale: 0.98 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="group relative p-6 rounded-2xl bg-white dark:bg-gray-900 border-2 border-slate-200 dark:border-gray-800 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer"
+    >
+      {/* Animated Gradient Glow */}
+      <motion.div
+        className={`absolute inset-0 bg-gradient-to-br ${colorMap[color as keyof typeof colorMap].gradient}/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700`}
+        animate={isHovered ? { scale: [1, 1.05, 1] } : {}}
+        transition={{ duration: 2, repeat: Infinity }}
+      />
+
+      {/* Shine Effect */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        animate={isHovered ? { x: ["-100%", "200%"] } : {}}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
+      />
+
+      <div className="relative flex items-center justify-between">
+        <div>
+          <div className="text-sm text-slate-500 dark:text-gray-400 mb-2 uppercase tracking-wide font-semibold">{label}</div>
+          <div className="flex items-baseline gap-2">
+            <motion.span
+              className="text-4xl font-black text-slate-900 dark:text-white"
+              animate={isHovered ? { scale: [1, 1.05, 1] } : {}}
+              transition={{ duration: 0.5 }}
+            >
+              {value}
+            </motion.span>
+            {change && <span className="text-sm text-green-600 dark:text-green-400 font-bold">{change}</span>}
+            {unit && <span className="text-sm text-slate-500 dark:text-gray-400">{unit}</span>}
+            {status && <span className="text-xs text-green-600 dark:text-green-400 font-bold uppercase">{status}</span>}
+          </div>
+        </div>
+
+        <motion.div
+          className={`w-14 h-14 rounded-xl bg-gradient-to-br ${colorMap[color as keyof typeof colorMap].gradient} flex items-center justify-center shadow-lg`}
+          whileHover={{ rotate: 360, scale: 1.1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Icon className="text-white" size={28} />
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
 

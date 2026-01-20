@@ -1,50 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TEAM } from '../constants';
+import { TEAM, COMPANY_CONTENT, COMPANY_ACHIEVEMENTS } from '../constants';
 import { Linkedin, Award, ShieldCheck, Globe, Zap, Target, Users, Trophy } from 'lucide-react';
 
 const Company = () => {
-    const achievements = [
-        {
-            title: "ISO 27001 Certified",
-            issuer: "International Standards Organization",
-            year: "2023",
-            icon: ShieldCheck,
-            color: "text-emerald-500 dark:text-emerald-400",
-            border: "hover:border-emerald-500/50"
-        },
-        {
-            title: "Top 50 Innovators",
-            issuer: "TechCrunch Disrupt",
-            year: "2024",
-            icon: Zap,
-            color: "text-yellow-500 dark:text-yellow-400",
-            border: "hover:border-yellow-500/50"
-        },
-        {
-            title: "Carbon Neutral",
-            issuer: "Global Climate Initiative",
-            year: "2022",
-            icon: Globe,
-            color: "text-blue-500 dark:text-blue-400",
-            border: "hover:border-blue-500/50"
-        },
-        {
-            title: "Enterprise Security Award",
-            issuer: "CyberDefense Magazine",
-            year: "2023",
-            icon: Trophy,
-            color: "text-purple-500 dark:text-purple-400",
-            border: "hover:border-purple-500/50"
-        }
-    ];
-
-    const stats = [
-        { label: "Founded", value: "2018" },
-        { label: "Global Offices", value: "12" },
-        { label: "Engineers", value: "450+" },
-        { label: "Patents", value: "84" }
-    ];
+    // Icon mapping for achievements
+    const iconMap: Record<string, any> = {
+        "ISO 27001 Certified": ShieldCheck,
+        "Top 50 Innovators": Zap,
+        "Carbon Neutral": Globe,
+        "Enterprise Security Award": Trophy
+    };
 
     return (
         <div className="min-h-screen pt-24 pb-24 bg-white dark:bg-[#050505] text-slate-900 dark:text-white overflow-hidden relative font-sans transition-colors duration-500">
@@ -64,7 +30,7 @@ const Company = () => {
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm text-xs font-mono text-brand-600 dark:text-brand-400 mb-6"
                     >
                         <Users size={14} />
-                        <span>HUMAN-CENTRIC TECHNOLOGY</span>
+                        <span>{COMPANY_CONTENT.hero.badge}</span>
                     </motion.div>
 
                     <motion.h1
@@ -73,7 +39,7 @@ const Company = () => {
                         viewport={{ once: true }}
                         className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-slate-900 dark:text-white"
                     >
-                        THE ARCHITECTS<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-600 to-slate-400 dark:from-gray-200 dark:to-gray-600">OF TOMORROW</span>
+                        {COMPANY_CONTENT.hero.title.prefix}<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-600 to-slate-400 dark:from-gray-200 dark:to-gray-600">{COMPANY_CONTENT.hero.title.highlight}</span>
                     </motion.h1>
 
                     <motion.p
@@ -83,15 +49,13 @@ const Company = () => {
                         transition={{ delay: 0.2 }}
                         className="text-xl text-slate-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto"
                     >
-                        Tectonic isn't just a company; it's a convergence of specialized intelligence.
-                        Founded on the belief that the future belongs to those who build it, we unify
-                        software, security, and robotics into a singular, evolutionary force.
+                        {COMPANY_CONTENT.hero.description}
                     </motion.p>
                 </div>
 
                 {/* STATS GRID */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-32">
-                    {stats.map((stat, i) => (
+                    {COMPANY_CONTENT.stats.map((stat, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
@@ -109,17 +73,15 @@ const Company = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-32 items-center">
                     <div>
                         <h2 className="text-3xl font-mono font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white">
-                            <Target className="text-brand-500" /> OUR MISSION
+                            <Target className="text-brand-500" /> {COMPANY_CONTENT.mission.title}
                         </h2>
                         <div className="space-y-6 text-slate-600 dark:text-gray-400 text-lg leading-relaxed">
                             <p>
-                                We operate at the intersection of imagination and engineering. Our mandate is simple:
-                                <strong className="text-slate-900 dark:text-white"> to dismantle the limitations of current infrastructure.</strong>
+                                {COMPANY_CONTENT.mission.text1}
+                                <strong className="text-slate-900 dark:text-white"> {COMPANY_CONTENT.mission.highlight}</strong>
                             </p>
                             <p>
-                                From the microscopic precision of our code to the kinetic power of our robotics, every
-                                Techtonic innovation is designed to be scalable, secure, and sustainable. We don't just
-                                adapt to change; we author it.
+                                {COMPANY_CONTENT.mission.text2}
                             </p>
                         </div>
                     </div>
@@ -131,10 +93,10 @@ const Company = () => {
                                 <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
                                 <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
                             </div>
-                            <div className="font-mono text-sm text-green-600 dark:text-green-500 mb-4">{'>'} System.Identity.Load()</div>
+                            <div className="font-mono text-sm text-green-600 dark:text-green-500 mb-4">{'>'} {COMPANY_CONTENT.mission.codeBlock.identity}</div>
                             <div className="space-y-2 font-mono text-sm text-slate-600 dark:text-gray-300">
-                                <p><span className="text-purple-600 dark:text-purple-400">const</span> <span className="text-blue-600 dark:text-blue-400">vision</span> = <span className="text-orange-600 dark:text-orange-400">"Limitless"</span>;</p>
-                                <p><span className="text-purple-600 dark:text-purple-400">const</span> <span className="text-blue-600 dark:text-blue-400">values</span> = [<span className="text-green-600 dark:text-green-300">"Integrity"</span>, <span className="text-green-600 dark:text-green-300">"Precision"</span>, <span className="text-green-600 dark:text-green-300">"Evolution"</span>];</p>
+                                <p><span className="text-purple-600 dark:text-purple-400">const</span> <span className="text-blue-600 dark:text-blue-400">{COMPANY_CONTENT.mission.codeBlock.visionVariable}</span> = <span className="text-orange-600 dark:text-orange-400">"{COMPANY_CONTENT.mission.codeBlock.visionValue}"</span>;</p>
+                                <p><span className="text-purple-600 dark:text-purple-400">const</span> <span className="text-blue-600 dark:text-blue-400">{COMPANY_CONTENT.mission.codeBlock.valuesVariable}</span> = [<span className="text-green-600 dark:text-green-300">"{COMPANY_CONTENT.mission.codeBlock.values[0]}"</span>, <span className="text-green-600 dark:text-green-300">"{COMPANY_CONTENT.mission.codeBlock.values[1]}"</span>, <span className="text-green-600 dark:text-green-300">"{COMPANY_CONTENT.mission.codeBlock.values[2]}"</span>];</p>
                                 <p><span className="text-purple-600 dark:text-purple-400">while</span>(true) {'{'}</p>
                                 <p className="pl-4">Innovation.accelerate();</p>
                                 <p className="pl-4">Humanity.empower();</p>
@@ -229,33 +191,36 @@ const Company = () => {
                 {/* ACHIEVEMENTS SECTION */}
                 <div>
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-mono font-bold mb-4 text-slate-900 dark:text-white">CERTIFICATIONS & RECOGNITION</h2>
+                        <h2 className="text-3xl font-mono font-bold mb-4 text-slate-900 dark:text-white">{COMPANY_CONTENT.certifications.title}</h2>
                         <div className="w-24 h-1 bg-brand-500 mx-auto" />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {achievements.map((item, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: idx * 0.1 }}
-                                className={`relative p-6 rounded-xl border border-slate-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a] group hover:bg-slate-50 dark:hover:bg-gray-900 transition-all duration-300 overflow-hidden ${item.border}`}
-                            >
-                                {/* Glow effect */}
-                                <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${item.color.replace('text-', 'from-')}/10 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity`}></div>
+                        {COMPANY_ACHIEVEMENTS.map((item, idx) => {
+                            const Icon = iconMap[item.title] || Award;
+                            return (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className={`relative p-6 rounded-xl border border-slate-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a] group hover:bg-slate-50 dark:hover:bg-gray-900 transition-all duration-300 overflow-hidden ${item.border}`}
+                                >
+                                    {/* Glow effect */}
+                                    <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${item.color.replace('text-', 'from-')}/10 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity`}></div>
 
-                                <div className={`w-12 h-12 rounded-lg bg-slate-100 dark:bg-gray-900 flex items-center justify-center mb-6 border border-slate-200 dark:border-gray-800 group-hover:scale-110 transition-transform ${item.color}`}>
-                                    <item.icon size={24} />
-                                </div>
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 leading-tight">{item.title}</h3>
-                                <p className="text-sm text-slate-500 dark:text-gray-500 font-mono mb-1">{item.issuer}</p>
-                                <div className="text-xs text-slate-400 dark:text-gray-600 border-t border-slate-100 dark:border-gray-800 pt-3 mt-4 flex justify-between items-center">
-                                    <span className="flex items-center gap-1"><Award size={12} /> ISSUED</span>
-                                    <span className="text-slate-600 dark:text-gray-400 font-bold">{item.year}</span>
-                                </div>
-                            </motion.div>
-                        ))}
+                                    <div className={`w-12 h-12 rounded-lg bg-slate-100 dark:bg-gray-900 flex items-center justify-center mb-6 border border-slate-200 dark:border-gray-800 group-hover:scale-110 transition-transform ${item.color}`}>
+                                        <Icon size={24} />
+                                    </div>
+                                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 leading-tight">{item.title}</h3>
+                                    <p className="text-sm text-slate-500 dark:text-gray-500 font-mono mb-1">{item.issuer}</p>
+                                    <div className="text-xs text-slate-400 dark:text-gray-600 border-t border-slate-100 dark:border-gray-800 pt-3 mt-4 flex justify-between items-center">
+                                        <span className="flex items-center gap-1"><Award size={12} /> ISSUED</span>
+                                        <span className="text-slate-600 dark:text-gray-400 font-bold">{item.year}</span>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
 
