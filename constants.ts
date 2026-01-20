@@ -2,7 +2,8 @@ import {
   Code, Shield, Bot, Briefcase,
   Globe, Server, Cpu, Zap
 } from 'lucide-react';
-import { Wing, Project, TeamMember, Milestone } from './types';
+import { Wing, Project, TeamMember, Milestone, Partnership } from './types';
+
 
 export const WINGS: Wing[] = [
   {
@@ -160,41 +161,93 @@ export const PROJECTS: Project[] = [
 export const TEAM: TeamMember[] = [
   {
     id: '1',
-    name: 'Dr. Alistair Thorne',
-    role: 'CEO & Founder',
-    bio: 'Visionary architect of the Techtonic Ecosystem. Former AI research lead.',
-    image: 'https://picsum.photos/400/400?random=10',
-    linkedin: '#'
+    name: 'Kazi Ahammad Ullah',
+    role: 'Co-Founder & CEO',
+    bio: 'Vision, decision, leadership',
+    image: 'https://lh3.googleusercontent.com/pw/AP1GczOUW1ZkyvpW6WV-C5OCLzDz1qlmsVlXo9Phu-_prnDMceAMjUlkB0WBrkq_DG1Rc4HgAjd8JyrywCP0fGBLfwWZUm8rqr-itNejJQH-0bFSyNcYBguHnbATvEhIpxGv_CdmStPn3-tBLxH7uKx_Rw4uNQ=w972-h842-s-no-gm?authuser=0',
+    linkedin: 'https://ahammadportfolio.netlify.app/'
   },
   {
     id: '2',
-    name: 'Sarah Jenning',
-    role: 'CTO - Software',
-    bio: 'Full-stack pioneer specializing in distributed cloud systems.',
-    image: 'https://picsum.photos/400/400?random=11',
-    linkedin: '#'
+    name: 'Alahi Majnur Osama',
+    role: 'Co-Founder & COO',
+    bio: 'Operations, management, execution',
+    image: 'https://lh3.googleusercontent.com/pw/AP1GczN5WSGo80KF7P2vNDJ54xRj80ysF_3OidXhDIy8w_YJYdz6w6MsdFTvFgKwuOP66cKs5GodlEDhkSt6ObO7bexL8Sx9nPNXeAfBlTyisWyp6-l1I3NTnGkzNiA8GtVAT64k2B43DWb7HMrEX2sbfjpZ2g=w842-h842-s-no-gm?authuser=0',
+    linkedin: 'https://alahimajnurosama.vercel.app'
   },
   {
     id: '3',
-    name: 'Marcus Chen',
-    role: 'Head of Robotics',
-    bio: 'Mechatronics expert with 15 patents in autonomous navigation.',
-    image: 'https://picsum.photos/400/400?random=12',
-    linkedin: '#'
+    name: 'Tajwar Saiyeed Abid',
+    role: 'Co-Founder & CTO',
+    bio: 'Technology, development, product',
+    image: 'https://lh3.googleusercontent.com/pw/AP1GczPbjmoUg-okcX-wjcpsfEVwcIpyOlugfIM0Jr6N1M2vzJ4XcpJIlou7kXtt1MBl1wsOg5pPnkZSEGMf6BK-523TS7ysfUm3fzvUgqQaXYvn5gGahtTeMvHR9-uXAIfrVmKhX4RTIyYKdnuy9oUOZW_MPw=w307-h370-s-no-gm?authuser=0',
+    linkedin: 'https://Tajwar.app'
   },
   {
     id: '4',
-    name: 'Elena Rostova',
-    role: 'CISO - Security',
-    bio: 'Ex-military cyber defense analyst ensuring impenetrable systems.',
-    image: 'https://picsum.photos/400/400?random=13',
-    linkedin: '#'
+    name: 'Tahmidul Alam Ahad',
+    role: 'Co-Founder & CMO',
+    bio: 'Marketing, branding, growth',
+    image: 'https://lh3.googleusercontent.com/pw/AP1GczOLQ8hlzOEeok3ToH61Zg6vwylLLPZAKOFSxmesyBfwz0Oy_XA6mELyhRp5xtqpBQil7v09kRpjv46RHyNDNyReNLDkhPR8Y-l8A_b0Ei7GbKtO4IJzB5LgfDR_jQkMLzNb3LIaJs2W5-vSdistHymJ2Q=w668-h842-s-no-gm?authuser=0',
+    linkedin: 'https://www.linkedin.com/in/tahmidul-ahad'
   }
 ];
+
 
 export const TIMELINE: Milestone[] = [
   { year: '2025', title: 'The Genesis', description: 'Techtonic consolidates 4 independent entities into one ecosystem.' },
   { year: '2026', title: 'AI Integration', description: 'Launch of proprietary Generative AI engine for enterprise code.' },
   { year: '2027', title: 'Quantum Readiness', description: 'R&D Lab begins testing quantum-resistant encryption protocols.' },
   { year: '2028', title: 'Bio-Tech Interface', description: 'Expansion into neural interface software for medical prosthetics.' },
+];
+
+export const PARTNERSHIPS: Partnership[] = [
+  {
+    id: '1',
+    name: 'AWS',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
+    category: 'Cloud Infrastructure',
+    description: 'Strategic cloud partner for scalable infrastructure',
+    since: '2024'
+  },
+  {
+    id: '2',
+    name: 'Microsoft Azure',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg',
+    category: 'Enterprise Solutions',
+    description: 'Enterprise-grade cloud and AI services',
+    since: '2024'
+  },
+  {
+    id: '3',
+    name: 'Google Cloud',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg',
+    category: 'AI & Machine Learning',
+    description: 'Advanced AI and data analytics platform',
+    since: '2025'
+  },
+  {
+    id: '4',
+    name: 'Docker',
+    logo: 'https://www.docker.com/wp-content/uploads/2022/03/horizontal-logo-monochromatic-white.png',
+    category: 'DevOps',
+    description: 'Containerization and deployment solutions',
+    since: '2023'
+  },
+  {
+    id: '5',
+    name: 'Kubernetes',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg',
+    category: 'Orchestration',
+    description: 'Container orchestration and management',
+    since: '2023'
+  },
+  {
+    id: '6',
+    name: 'GitHub',
+    logo: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+    category: 'Development',
+    description: 'Version control and collaboration platform',
+    since: '2022'
+  }
 ];

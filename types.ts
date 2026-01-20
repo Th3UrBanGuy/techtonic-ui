@@ -46,6 +46,16 @@ export interface Milestone {
   description: string;
 }
 
+export interface Partnership {
+  id: string;
+  name: string;
+  logo: string;
+  category: string;
+  description: string;
+  since: string;
+}
+
+
 // Link Center Types
 export interface ShortenedLink {
   id: string;
