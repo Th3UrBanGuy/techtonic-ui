@@ -182,7 +182,7 @@ export const TEAM: TeamMember[] = [
     name: 'Tajwar Saiyeed Abid',
     role: 'Co-Founder & CTO',
     bio: 'Technology, development, product',
-    image: 'https://lh3.googleusercontent.com/pw/AP1GczPbjmoUg-okcX-wjcpsfEVwcIpyOlugfIM0Jr6N1M2vzJ4XcpJIlou7kXtt1MBl1wsOg5pPnkZSEGMf6BK-523TS7ysfUm3fzvUgqQaXYvn5gGahtTeMvHR9-uXAIfrVmKhX4RTIyYKdnuy9oUOZW_MPw=w307-h370-s-no-gm?authuser=0',
+    image: 'https://cdn.pixabay.com/photo/2023/03/05/21/11/ai-generated-7832244_1280.jpg',
     linkedin: 'https://Tajwar.app'
   },
   {
