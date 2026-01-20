@@ -33,33 +33,34 @@ export const WINGS: Wing[] = [
       '🌟 5-star client satisfaction rating'
     ]
   },
-  {
-    id: 'security',
-    name: 'Cyber-Shield',
-    tagline: 'Impenetrable Defense',
-    description: 'Advanced penetration testing and enterprise security architecture.',
-    icon: Shield,
-    color: 'text-orange-500',
-    techStack: ['Kali Linux', 'Python', 'Metasploit', 'SentinelOne'],
-    features: ['Security Audits', 'Threat Intelligence', 'Zero Trust Architecture'],
-    teamName: 'Guardian Protocol',
-    teamLogo: 'https://via.placeholder.com/400x400/FF6B35/FFFFFF?text=GP',
-    teamSubtitle: 'Cybersecurity Defense Team',
-    teamPurpose: 'Guardian Protocol is an elite cybersecurity team committed to protecting digital assets and infrastructure. We specialize in advanced threat detection, penetration testing, and implementing zero-trust security architectures that safeguard organizations from evolving cyber threats.',
-    teamTimeline: [
-      { year: '2023', event: 'Team Formation & First Security Audit' },
-      { year: '2024', event: 'Prevented 200+ Cyber Attacks' },
-      { year: '2025', event: 'Zero Trust Implementation - 30+ Enterprises' },
-      { year: '2026', event: 'AI-Powered Threat Detection System' }
-    ],
-    teamAchievements: [
-      '🛡️ Best Security Team - CyberSec Awards 2024',
-      '🔒 100% Success Rate in Penetration Tests',
-      '⚡ Real-time threat detection in 15+ countries',
-      '🎯 Certified Ethical Hackers (CEH) Team',
-      '🏆 National Cybersecurity Excellence Award'
-    ]
-  },
+  // TEMPORARILY HIDDEN - Can be re-enabled later
+  // {
+  //   id: 'security',
+  //   name: 'Cyber-Shield',
+  //   tagline: 'Impenetrable Defense',
+  //   description: 'Advanced penetration testing and enterprise security architecture.',
+  //   icon: Shield,
+  //   color: 'text-orange-500',
+  //   techStack: ['Kali Linux', 'Python', 'Metasploit', 'SentinelOne'],
+  //   features: ['Security Audits', 'Threat Intelligence', 'Zero Trust Architecture'],
+  //   teamName: 'Guardian Protocol',
+  //   teamLogo: 'https://via.placeholder.com/400x400/FF6B35/FFFFFF?text=GP',
+  //   teamSubtitle: 'Cybersecurity Defense Team',
+  //   teamPurpose: 'Guardian Protocol is an elite cybersecurity team committed to protecting digital assets and infrastructure. We specialize in advanced threat detection, penetration testing, and implementing zero-trust security architectures that safeguard organizations from evolving cyber threats.',
+  //   teamTimeline: [
+  //     { year: '2023', event: 'Team Formation & First Security Audit' },
+  //     { year: '2024', event: 'Prevented 200+ Cyber Attacks' },
+  //     { year: '2025', event: 'Zero Trust Implementation - 30+ Enterprises' },
+  //     { year: '2026', event: 'AI-Powered Threat Detection System' }
+  //   ],
+  //   teamAchievements: [
+  //     '🛡️ Best Security Team - CyberSec Awards 2024',
+  //     '🔒 100% Success Rate in Penetration Tests',
+  //     '⚡ Real-time threat detection in 15+ countries',
+  //     '🎯 Certified Ethical Hackers (CEH) Team',
+  //     '🏆 National Cybersecurity Excellence Award'
+  //   ]
+  // },
   {
     id: 'robotics',
     name: 'Robotics & Automation',
@@ -86,33 +87,34 @@ export const WINGS: Wing[] = [
       '🤝 Partnership with 12+ industrial clients'
     ]
   },
-  {
-    id: 'consultancy',
-    name: 'Tech Consultancy',
-    tagline: 'Strategic Vision',
-    description: 'Guiding enterprises through digital transformation.',
-    icon: Briefcase,
-    color: 'text-emerald-500',
-    techStack: ['Big Data', 'BI Tools', 'Agile', 'Six Sigma'],
-    features: ['Digital Transformation', 'IT Strategy', 'Market Analysis'],
-    teamName: 'Nexus Advisors',
-    teamLogo: 'https://via.placeholder.com/400x400/10B981/FFFFFF?text=NA',
-    teamSubtitle: 'Strategic Technology Consultants',
-    teamPurpose: 'Nexus Advisors is a strategic technology consulting team that guides enterprises through complex digital transformations. We combine deep technical expertise with business acumen to deliver actionable insights and roadmaps that drive sustainable growth and competitive advantage.',
-    teamTimeline: [
-      { year: '2022', event: 'Consultancy Launch & First Client' },
-      { year: '2023', event: 'Digital Transformation - 25+ Companies' },
-      { year: '2024', event: 'Strategic Partnership with Fortune 500' },
-      { year: '2025', event: 'AI Strategy Framework Development' }
-    ],
-    teamAchievements: [
-      '💼 Top Consulting Firm - Tech Advisory 2024',
-      '📈 $50M+ in client cost savings',
-      '🌐 Served clients in 20+ countries',
-      '🎓 Published 15+ industry whitepapers',
-      '⭐ 98% Client Retention Rate'
-    ]
-  }
+  // TEMPORARILY HIDDEN - Can be re-enabled later
+  // {
+  //   id: 'consultancy',
+  //   name: 'Tech Consultancy',
+  //   tagline: 'Strategic Vision',
+  //   description: 'Guiding enterprises through digital transformation.',
+  //   icon: Briefcase,
+  //   color: 'text-emerald-500',
+  //   techStack: ['Big Data', 'BI Tools', 'Agile', 'Six Sigma'],
+  //   features: ['Digital Transformation', 'IT Strategy', 'Market Analysis'],
+  //   teamName: 'Nexus Advisors',
+  //   teamLogo: 'https://via.placeholder.com/400x400/10B981/FFFFFF?text=NA',
+  //   teamSubtitle: 'Strategic Technology Consultants',
+  //   teamPurpose: 'Nexus Advisors is a strategic technology consulting team that guides enterprises through complex digital transformations. We combine deep technical expertise with business acumen to deliver actionable insights and roadmaps that drive sustainable growth and competitive advantage.',
+  //   teamTimeline: [
+  //     { year: '2022', event: 'Consultancy Launch & First Client' },
+  //     { year: '2023', event: 'Digital Transformation - 25+ Companies' },
+  //     { year: '2024', event: 'Strategic Partnership with Fortune 500' },
+  //     { year: '2025', event: 'AI Strategy Framework Development' }
+  //   ],
+  //   teamAchievements: [
+  //     '💼 Top Consulting Firm - Tech Advisory 2024',
+  //     '📈 $50M+ in client cost savings',
+  //     '🌐 Served clients in 20+ countries',
+  //     '🎓 Published 15+ industry whitepapers',
+  //     '⭐ 98% Client Retention Rate'
+  //   ]
+  // }
 ];
 
 export const PROJECTS: Project[] = [
