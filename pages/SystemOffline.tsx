@@ -1,68 +1,141 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { WifiOff, RefreshCw, ServerOff } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useMotionTemplate, useMotionValue, animate } from 'framer-motion';
+import { Power, RefreshCcw, WifiOff } from 'lucide-react';
 
 const SystemOffline = () => {
+    const [isRetrying, setIsRetrying] = useState(false);
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    // Spotlight effect logic
+    function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+        const { left, top } = currentTarget.getBoundingClientRect();
+        mouseX.set(clientX - left);
+        mouseY.set(clientY - top);
+    }
+
     const handleRetry = () => {
-        window.location.reload();
+        setIsRetrying(true);
+        setTimeout(() => window.location.reload(), 2500);
     };
 
+    // Generate random sparkles
+    const sparkles = Array.from({ length: 30 }).map((_, i) => ({
+        id: i,
+        size: Math.random() * 2 + 1,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        duration: Math.random() * 2 + 1,
+        delay: Math.random() * 2
+    }));
+
     return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#050505] relative overflow-hidden px-4">
-            {/* Glitch Effect Background */}
-            <div className="absolute inset-0 pointer-events-none opacity-20 overflow-hidden">
-                <div className="glitch-overlay absolute inset-0 bg-repeat bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+        <div
+            className="min-h-screen bg-[#020205] text-white flex flex-col items-center justify-center relative overflow-hidden group font-sans"
+            onMouseMove={handleMouseMove}
+        >
+            {/* 1. Dynamic Spotlight Background */}
+            <motion.div
+                className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-500"
+                style={{
+                    background: useMotionTemplate`
+                        radial-gradient(
+                            600px circle at ${mouseX}px ${mouseY}px,
+                            rgba(255,255,255,0.06),
+                            transparent 80%
+                        )
+                    `
+                }}
+            />
+
+            {/* Static Ambient Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-900/20 blur-[120px] rounded-full pointer-events-none" />
+
+            {/* 2. Sparkles Core */}
+            <div className="absolute inset-0 z-0">
+                {sparkles.map((sparkle) => (
+                    <motion.div
+                        key={sparkle.id}
+                        className="absolute bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+                        style={{
+                            width: sparkle.size,
+                            height: sparkle.size,
+                            left: `${sparkle.left}%`,
+                            top: `${sparkle.top}%`,
+                        }}
+                        animate={{ opacity: [0, 1, 0], scale: [0.5, 1.2, 0.5] }}
+                        transition={{
+                            duration: sparkle.duration,
+                            repeat: Infinity,
+                            delay: sparkle.delay,
+                            ease: "easeInOut"
+                        }}
+                    />
+                ))}
             </div>
 
-            <div className="max-w-md w-full relative z-10 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="bg-white/50 dark:bg-black/50 backdrop-blur-xl border border-slate-200 dark:border-red-900/30 p-8 rounded-3xl shadow-2xl relative overflow-hidden"
-                >
-                    {/* Red pulse glow */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 animate-pulse" />
-
-                    <motion.div
-                        initial={{ scale: 0.8 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
-                        className="flex justify-center mb-6"
-                    >
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-red-500/20 blur-2xl rounded-full" />
-                            <div className="w-24 h-24 bg-gradient-to-b from-red-500 to-red-700 rounded-full flex items-center justify-center shadow-lg relative z-10 border-4 border-slate-50 dark:border-[#0f0f0f]">
-                                <WifiOff className="w-10 h-10 text-white" />
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    <h1 className="text-3xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">
-                        SYSTEM <span className="text-red-500">OFFLINE</span>
-                    </h1>
-
-                    <p className="text-slate-600 dark:text-gray-400 mb-8">
-                        Connection to the mainframe has been lost. The server is currently unreachable.
-                    </p>
-
-                    <div className="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 rounded-xl p-4 mb-8">
-                        <div className="flex items-center gap-3 text-red-600 dark:text-red-400 text-sm font-mono">
-                            <ServerOff size={16} />
-                            <span>Error Code: 503_SERVICE_UNAVAILABLE</span>
+            {/* 3. Main Content Content */}
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, ease: 'easeOut' }}
+                className="relative z-10 max-w-sm w-full text-center px-6"
+            >
+                {/* Central Focus Element */}
+                <div className="mb-12 relative flex justify-center">
+                    <div className="relative group/icon cursor-pointer">
+                        <div className="absolute inset-0 bg-red-500/10 blur-2xl rounded-full scale-150 group-hover/icon:scale-175 transition-transform duration-700" />
+                        <div className="w-24 h-24 rounded-full border border-white/10 bg-white/5 backdrop-blur-md flex items-center justify-center relative overflow-hidden">
+                            <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+                                className="absolute inset-0 bg-gradient-to-t from-red-500/20 to-transparent opacity-50"
+                            />
+                            <WifiOff className="w-8 h-8 text-white/70 relative z-10" />
                         </div>
                     </div>
+                </div>
 
-                    <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={handleRetry}
-                        className="w-full py-3 bg-slate-900 dark:bg-white text-white dark:text-black rounded-xl font-bold font-mono tracking-wide flex items-center justify-center gap-2 hover:bg-slate-800 dark:hover:bg-gray-200 transition-colors"
-                    >
-                        <RefreshCw size={16} />
-                        RECONNECT
-                    </motion.button>
-                </motion.div>
+                {/* Elegant Typography */}
+                <div className="space-y-4 mb-16">
+                    <h1 className="text-5xl font-light tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-transparent">
+                        Offline
+                    </h1>
+                    <p className="text-white/30 font-light tracking-widest text-xs uppercase">
+                        Connection Severed • Stasis Mode Active
+                    </p>
+                </div>
+
+                {/* Magnetic Button Interaction */}
+                <motion.button
+                    onClick={handleRetry}
+                    disabled={isRetrying}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group relative inline-flex items-center justify-center gap-3 px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 rounded-full transition-all duration-300 backdrop-blur-sm"
+                >
+                    <RefreshCcw
+                        size={16}
+                        className={`text-white/50 group-hover:text-white transition-colors ${isRetrying ? 'animate-spin' : ''}`}
+                    />
+                    <span className="text-sm font-medium tracking-wide text-white/70 group-hover:text-white">
+                        {isRetrying ? 'RECONNECTING...' : 'RE-ESTABLISH LINK'}
+                    </span>
+
+                    {/* Hover Glow */}
+                    <div className="absolute inset-0 rounded-full ring-2 ring-white/10 group-hover:ring-white/30 transition-all opacity-0 group-hover:opacity-100" />
+                </motion.button>
+            </motion.div>
+
+            {/* Bottom Status */}
+            <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-8 text-[10px] text-white/20 font-mono">
+                <div className="flex items-center gap-2">
+                    <Power size={10} />
+                    <span>SYSTEM_DORMANT</span>
+                </div>
+                <div>
+                    ERR_CODE: 0x503
+                </div>
             </div>
         </div>
     );
