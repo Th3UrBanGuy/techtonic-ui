@@ -121,9 +121,9 @@ const LinkList: React.FC<LinkListProps> = ({
 
                 {/* Filters and Sort */}
                 <div className="flex flex-wrap gap-3 items-center justify-between">
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                         <Filter size={16} className="text-slate-400" />
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                             {(['all', 'active', 'expired', 'locked'] as FilterType[]).map((f) => (
                                 <button
                                     key={f}

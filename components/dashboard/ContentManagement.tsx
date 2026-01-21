@@ -248,18 +248,20 @@ const PagesContentManager: React.FC = () => {
                 </div>
 
                 <div className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-6 shadow-sm dark:shadow-none">
-                    <h4 className="font-bold text-cyan-600 dark:text-cyan-400 mb-4">Stats Section</h4>
+                    <h4 className="font-bold text-cyan-600 dark:text-cyan-400 mb-4">Partnership Stats</h4>
                     <div className="grid grid-cols-2 gap-4">
-                        {/* Stats mapping is tricky if array structure varies, but assuming standard 4 stats */}
-                        {(homeContent.stats || []).map((stat: any, idx: number) => (
+                        {(homeContent?.partnerships?.stats || []).map((stat: any, idx: number) => (
                             <div key={idx} className="bg-slate-50 dark:bg-slate-950/50 p-3 rounded">
                                 <label className="block text-xs text-slate-500 mb-1">Label</label>
                                 <input
                                     value={stat.label}
                                     onChange={e => {
-                                        const newStats = [...homeContent.stats];
+                                        const newStats = [...(homeContent.partnerships?.stats || [])];
                                         newStats[idx] = { ...stat, label: e.target.value };
-                                        setHomeContent({ ...homeContent, stats: newStats });
+                                        setHomeContent({
+                                            ...homeContent,
+                                            partnerships: { ...homeContent.partnerships, stats: newStats }
+                                        });
                                     }}
                                     className="w-full bg-transparent border-b border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-xs mb-2 focus:outline-none focus:border-cyan-500"
                                 />
@@ -267,9 +269,12 @@ const PagesContentManager: React.FC = () => {
                                 <input
                                     value={stat.value}
                                     onChange={e => {
-                                        const newStats = [...homeContent.stats];
+                                        const newStats = [...(homeContent.partnerships?.stats || [])];
                                         newStats[idx] = { ...stat, value: e.target.value };
-                                        setHomeContent({ ...homeContent, stats: newStats });
+                                        setHomeContent({
+                                            ...homeContent,
+                                            partnerships: { ...homeContent.partnerships, stats: newStats }
+                                        });
                                     }}
                                     className="w-full bg-transparent border-b border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-cyan-500"
                                 />

@@ -63,31 +63,34 @@ const InnovationManager: React.FC = () => {
     return (
         <div className="space-y-6">
             {/* Section Tabs */}
-            <div className="flex gap-2">
-                <button
-                    onClick={() => setSection('tech')}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${section === 'tech'
-                        ? 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30'
-                        : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200 dark:bg-white/5 dark:text-slate-400 dark:hover:bg-white/10 dark:border-white/10'
-                        }`}
-                >
-                    Tech Stack
-                </button>
-                <button
-                    onClick={() => setSection('roadmap')}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${section === 'roadmap'
-                        ? 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30'
-                        : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200 dark:bg-white/5 dark:text-slate-400 dark:hover:bg-white/10 dark:border-white/10'
-                        }`}
-                >
-                    Roadmap
-                </button>
+            {/* Section Tabs */}
+            <div className="flex flex-col sm:flex-row gap-2">
+                <div className="flex gap-2 w-full sm:w-auto">
+                    <button
+                        onClick={() => setSection('tech')}
+                        className={`flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-medium transition-all ${section === 'tech'
+                            ? 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30'
+                            : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200 dark:bg-white/5 dark:text-slate-400 dark:hover:bg-white/10 dark:border-white/10'
+                            }`}
+                    >
+                        Tech Stack
+                    </button>
+                    <button
+                        onClick={() => setSection('roadmap')}
+                        className={`flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-medium transition-all ${section === 'roadmap'
+                            ? 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30'
+                            : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200 dark:bg-white/5 dark:text-slate-400 dark:hover:bg-white/10 dark:border-white/10'
+                            }`}
+                    >
+                        Roadmap
+                    </button>
+                </div>
                 <button
                     onClick={() => {
                         setShowForm(true);
                         setEditingItem(null);
                     }}
-                    className="ml-auto px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-sm font-medium flex items-center gap-2 transition-colors"
+                    className="sm:ml-auto w-full sm:w-auto px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-colors"
                 >
                     <Plus size={16} />
                     Add {section === 'tech' ? 'Technology' : 'Roadmap Item'}
