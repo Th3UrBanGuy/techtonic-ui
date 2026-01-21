@@ -59,7 +59,7 @@ const MemberList = () => {
                             whileHover={{ scale: 1.02, rotateX: 2, rotateY: 2, zIndex: 10 }}
                             whileTap={{ scale: 0.98 }}
                             transition={{ type: "spring", stiffness: 300, damping: 20, delay: index * 0.05 }}
-                            className="group bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm hover:bg-white/10 transition-colors hover:border-cyan-500/30 relative overflow-hidden shadow-xl"
+                            className="group bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-6 backdrop-blur-sm hover:bg-slate-50 dark:hover:bg-white/10 transition-colors hover:border-cyan-500/30 relative overflow-hidden shadow-sm dark:shadow-xl"
                             style={{ perspective: 1000 }}
                         >
                             {/* Glass Reflection Effect */}
@@ -70,7 +70,7 @@ const MemberList = () => {
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={(e) => { e.stopPropagation(); handleEditClick(member); }}
-                                    className="p-2 bg-slate-800 text-cyan-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-colors shadow-lg"
+                                    className="p-2 bg-slate-100 dark:bg-slate-800 text-cyan-600 dark:text-cyan-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-colors shadow-lg"
                                     title="Edit Profile"
                                 >
                                     <Edit2 size={14} />
@@ -79,7 +79,7 @@ const MemberList = () => {
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={(e) => { e.stopPropagation(); handleDelete(member.id); }}
-                                    className="p-2 bg-slate-800 text-red-400 rounded-lg hover:bg-red-500 hover:text-white transition-colors shadow-lg"
+                                    className="p-2 bg-slate-100 dark:bg-slate-800 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-500 hover:text-white transition-colors shadow-lg"
                                     title="Terminate"
                                 >
                                     <Trash2 size={14} />
@@ -96,22 +96,22 @@ const MemberList = () => {
                                 </motion.div>
                             </div>
 
-                            <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">{member.name}</h3>
-                            <p className="text-sm text-cyan-500/80 mb-4 flex items-center gap-1 font-mono">
+                            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">{member.name}</h3>
+                            <p className="text-sm text-cyan-600 dark:text-cyan-500/80 mb-4 flex items-center gap-1 font-mono">
                                 <Shield size={12} />
                                 {member.role.toUpperCase()}
                             </p>
 
-                            <div className="space-y-3 pt-4 border-t border-white/5">
-                                <div className="flex items-center gap-2 text-sm text-slate-400 truncate">
+                            <div className="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5">
+                                <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 truncate">
                                     <Mail size={14} className="shrink-0" />
                                     {member.email}
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <div className={`w-2 h-2 rounded-full ${member.status === 'Active' ? 'bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]' :
-                                            member.status === 'Offline' ? 'bg-slate-500' : 'bg-amber-500'
+                                        member.status === 'Offline' ? 'bg-slate-400 dark:bg-slate-500' : 'bg-amber-500'
                                         }`} />
-                                    <span className="text-xs text-slate-300 font-mono">{member.status}</span>
+                                    <span className="text-xs text-slate-500 dark:text-slate-300 font-mono">{member.status}</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -135,55 +135,56 @@ const MemberList = () => {
                             exit={{ scale: 0.9, y: 50, rotateX: 10 }}
                             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                             onClick={(e) => e.stopPropagation()}
-                            className="bg-slate-900 border border-white/10 rounded-2xl w-full max-w-md p-6 shadow-2xl relative"
+
+                            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-2xl w-full max-w-md p-6 shadow-2xl relative"
                         >
                             <motion.button
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => setIsEditModalOpen(false)}
-                                className="absolute top-4 right-4 text-slate-500 hover:text-white transition-colors"
+                                className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:text-slate-500 dark:hover:text-white transition-colors"
                             >
                                 <X size={20} />
                             </motion.button>
 
-                            <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                                <Edit2 size={20} className="text-cyan-400" />
+                            <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                                <Edit2 size={20} className="text-cyan-600 dark:text-cyan-400" />
                                 EDIT OPERATIVE
                             </h2>
 
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-xs font-mono text-cyan-500/60 mb-1">NAME</label>
+                                    <label className="block text-xs font-mono text-cyan-600 dark:text-cyan-500/60 mb-1">NAME</label>
                                     <input
                                         type="text"
                                         value={editingMember.name}
                                         onChange={(e) => setEditingMember({ ...editingMember, name: e.target.value })}
-                                        className="w-full bg-slate-950/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
+                                        className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-mono text-cyan-500/60 mb-1">ROLE</label>
+                                    <label className="block text-xs font-mono text-cyan-600 dark:text-cyan-500/60 mb-1">ROLE</label>
                                     <input
                                         type="text"
                                         value={editingMember.role}
                                         onChange={(e) => setEditingMember({ ...editingMember, role: e.target.value })}
-                                        className="w-full bg-slate-950/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
+                                        className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-mono text-cyan-500/60 mb-1">EMAIL</label>
+                                    <label className="block text-xs font-mono text-cyan-600 dark:text-cyan-500/60 mb-1">EMAIL</label>
                                     <input
                                         type="email"
                                         value={editingMember.email}
                                         onChange={(e) => setEditingMember({ ...editingMember, email: e.target.value })}
-                                        className="w-full bg-slate-950/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
+                                        className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-mono text-cyan-500/60 mb-1">STATUS</label>
+                                    <label className="block text-xs font-mono text-cyan-600 dark:text-cyan-500/60 mb-1">STATUS</label>
                                     <select
                                         value={editingMember.status}
                                         onChange={(e) => setEditingMember({ ...editingMember, status: e.target.value })}
-                                        className="w-full bg-slate-950/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
+                                        className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
                                     >
                                         <option value="Active">Active</option>
                                         <option value="Offline">Offline</option>
@@ -196,7 +197,7 @@ const MemberList = () => {
                                 <motion.button
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => setIsEditModalOpen(false)}
-                                    className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-bold transition-colors"
+                                    className="flex-1 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-lg font-bold transition-colors"
                                 >
                                     CANCEL
                                 </motion.button>

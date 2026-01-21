@@ -33,10 +33,10 @@ const Inquiries = () => {
     };
 
     return (
-        <div className="bg-white/5 border border-white/10 rounded-xl overflow-hidden backdrop-blur-sm relative min-h-[500px] shadow-2xl">
+        <div className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden backdrop-blur-sm relative min-h-[500px] shadow-sm dark:shadow-2xl">
             <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm text-slate-400">
-                    <thead className="bg-white/5 text-slate-200 font-mono text-xs uppercase">
+                <table className="w-full text-left text-sm text-slate-600 dark:text-slate-400">
+                    <thead className="bg-slate-50 dark:bg-white/5 text-slate-700 dark:text-slate-200 font-mono text-xs uppercase">
                         <tr>
                             <th className="p-4 w-10"><input type="checkbox" className="rounded border-slate-700 bg-slate-800" /></th>
                             <th className="p-4">Sender</th>
@@ -47,7 +47,7 @@ const Inquiries = () => {
                             <th className="p-4 text-right">Actions</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-white/5">
+                    <tbody className="divide-y divide-slate-200 dark:divide-white/5">
                         <AnimatePresence>
                             {inquiries.map((inquiry, index) => (
                                 <motion.tr
@@ -59,25 +59,26 @@ const Inquiries = () => {
                                     whileHover={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
                                     whileTap={{ scale: 0.99, backgroundColor: 'rgba(6,182,212,0.1)' }}
                                     transition={{ delay: index * 0.05 }}
-                                    className="transition-colors group cursor-pointer relative"
+
+                                    className="transition-colors group cursor-pointer relative hover:bg-slate-50 dark:hover:bg-white/5"
                                     onClick={() => handleView(inquiry)}
                                 >
                                     <td className="p-4" onClick={(e) => e.stopPropagation()}>
                                         <input type="checkbox" className="rounded border-slate-700 bg-slate-800" />
                                     </td>
                                     <td className="p-4">
-                                        <div className="text-white font-medium">{inquiry.name}</div>
+                                        <div className="text-slate-900 dark:text-white font-medium">{inquiry.name}</div>
                                         <div className="text-xs text-slate-500">{inquiry.email}</div>
                                     </td>
-                                    <td className="p-4 text-white font-medium">{inquiry.subject}</td>
+                                    <td className="p-4 text-slate-900 dark:text-white font-medium">{inquiry.subject}</td>
                                     <td className="p-4 hidden md:table-cell truncate max-w-xs">{inquiry.preview}</td>
                                     <td className="p-4 whitespace-nowrap text-xs font-mono">{inquiry.date}</td>
                                     <td className="p-4">
                                         <motion.span
                                             whileHover={{ scale: 1.1 }}
                                             className={`px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider border ${inquiry.status === 'New' ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' :
-                                                    inquiry.status === 'Starred' ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' :
-                                                        'bg-slate-700/50 text-slate-400 border-slate-600'
+                                                inquiry.status === 'Starred' ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' :
+                                                    'bg-slate-700/50 text-slate-400 border-slate-600'
                                                 }`}>
                                             {inquiry.status}
                                         </motion.span>
@@ -88,7 +89,8 @@ const Inquiries = () => {
                                                 whileHover={{ scale: 1.2 }}
                                                 whileTap={{ scale: 0.9 }}
                                                 onClick={() => handleView(inquiry)}
-                                                className="p-2 hover:bg-white/10 rounded-lg text-slate-300 hover:text-white transition-colors"
+
+                                                className="p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-lg text-slate-400 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-white transition-colors"
                                                 title="View Details"
                                             >
                                                 <Eye size={16} />
@@ -97,7 +99,8 @@ const Inquiries = () => {
                                                 whileHover={{ scale: 1.2 }}
                                                 whileTap={{ scale: 0.9 }}
                                                 onClick={() => handleToggleStatus(inquiry.id, inquiry.status === 'Starred' ? 'Read' : 'Starred')}
-                                                className={`p-2 hover:bg-white/10 rounded-lg transition-colors ${inquiry.status === 'Starred' ? 'text-amber-400' : 'text-slate-300 hover:text-amber-400'}`}
+
+                                                className={`p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-lg transition-colors ${inquiry.status === 'Starred' ? 'text-amber-500 dark:text-amber-400' : 'text-slate-400 dark:text-slate-300 hover:text-amber-500 dark:hover:text-amber-400'}`}
                                                 title="Star"
                                             >
                                                 <Star size={16} fill={inquiry.status === 'Starred' ? 'currentColor' : 'none'} />
@@ -106,7 +109,8 @@ const Inquiries = () => {
                                                 whileHover={{ scale: 1.2 }}
                                                 whileTap={{ scale: 0.9 }}
                                                 onClick={() => handleDelete(inquiry.id)}
-                                                className="p-2 hover:bg-white/10 rounded-lg text-slate-300 hover:text-red-400 transition-colors"
+
+                                                className="p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-lg text-slate-400 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                                                 title="Delete"
                                             >
                                                 <Trash2 size={16} />
@@ -128,7 +132,8 @@ const Inquiries = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 50 }}
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                        className="absolute inset-0 z-50 bg-slate-900/95 backdrop-blur-md flex flex-col p-6 lg:p-12"
+
+                        className="absolute inset-0 z-50 bg-white dark:bg-slate-900/95 backdrop-blur-md flex flex-col p-6 lg:p-12"
                     >
                         <div className="flex justify-between items-start mb-8">
                             <div>
@@ -136,7 +141,8 @@ const Inquiries = () => {
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.1 }}
-                                    className="text-2xl font-bold text-white mb-2"
+
+                                    className="text-2xl font-bold text-slate-900 dark:text-white mb-2"
                                 >
                                     {selectedInquiry.subject}
                                 </motion.h2>
@@ -146,7 +152,7 @@ const Inquiries = () => {
                                     transition={{ delay: 0.2 }}
                                     className="flex items-center gap-2 text-slate-400"
                                 >
-                                    <span className="bg-white/10 px-2 py-1 rounded text-xs text-white">{selectedInquiry.name}</span>
+                                    <span className="bg-slate-100 dark:bg-white/10 px-2 py-1 rounded text-xs text-slate-700 dark:text-white">{selectedInquiry.name}</span>
                                     <span className="text-sm">&lt;{selectedInquiry.email}&gt;</span>
                                     <span className="text-xs">• {selectedInquiry.date}</span>
                                 </motion.div>
@@ -154,7 +160,8 @@ const Inquiries = () => {
                             <motion.button
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => setSelectedInquiry(null)}
-                                className="p-2 hover:bg-white/10 rounded-full text-slate-400 hover:text-white transition-colors"
+
+                                className="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                             >
                                 <X size={24} />
                             </motion.button>
@@ -164,7 +171,8 @@ const Inquiries = () => {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.3 }}
-                            className="flex-1 bg-white/5 border border-white/10 rounded-xl p-6 text-slate-300 leading-relaxed font-sans text-lg overflow-y-auto"
+
+                            className="flex-1 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-6 text-slate-700 dark:text-slate-300 leading-relaxed font-sans text-lg overflow-y-auto"
                         >
                             {selectedInquiry.fullText}
                         </motion.div>

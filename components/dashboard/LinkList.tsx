@@ -106,7 +106,7 @@ const LinkList: React.FC<LinkListProps> = ({
     return (
         <div className="space-y-4">
             {/* Controls */}
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm">
+            <div className="bg-white border border-slate-200 shadow-sm dark:bg-white/5 dark:border-white/10 rounded-xl p-4 backdrop-blur-sm">
                 {/* Search */}
                 <div className="relative mb-4">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
@@ -115,7 +115,7 @@ const LinkList: React.FC<LinkListProps> = ({
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search links..."
-                        className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
+                        className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 text-slate-900 dark:bg-white/5 dark:border-white/10 dark:text-white rounded-lg placeholder-slate-500 focus:border-cyan-500 focus:outline-none transition-colors"
                     />
                 </div>
 
@@ -129,8 +129,8 @@ const LinkList: React.FC<LinkListProps> = ({
                                     key={f}
                                     onClick={() => setFilter(f)}
                                     className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${filter === f
-                                            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30'
-                                            : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10'
+                                        ? 'bg-cyan-500/20 text-cyan-500 dark:text-cyan-400 border border-cyan-500/30'
+                                        : 'bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100 dark:bg-white/5 dark:text-slate-400 dark:border-white/10 dark:hover:bg-white/10'
                                         }`}
                                 >
                                     {f.charAt(0).toUpperCase() + f.slice(1)}
@@ -143,7 +143,7 @@ const LinkList: React.FC<LinkListProps> = ({
                         <select
                             value={sort}
                             onChange={(e) => setSort(e.target.value as SortType)}
-                            className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors"
+                            className="px-3 py-1.5 bg-slate-50 border-slate-200 text-slate-700 dark:bg-white/5 dark:border-white/10 dark:text-white rounded-lg text-sm focus:border-cyan-500 focus:outline-none transition-colors"
                         >
                             <option value="newest">Newest First</option>
                             <option value="oldest">Oldest First</option>
@@ -153,7 +153,7 @@ const LinkList: React.FC<LinkListProps> = ({
 
                         <button
                             onClick={handleExport}
-                            className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-2"
+                            className="px-3 py-1.5 bg-slate-50 border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:bg-white/5 dark:border-white/10 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/10 rounded-lg transition-colors flex items-center gap-2"
                         >
                             <Download size={16} />
                             <span className="hidden sm:inline">Export</span>
@@ -228,7 +228,7 @@ const LinkList: React.FC<LinkListProps> = ({
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="bg-white/5 border border-white/10 rounded-xl p-12 text-center"
+                        className="bg-white border border-slate-200 dark:bg-white/5 dark:border-white/10 rounded-xl p-12 text-center"
                     >
                         <div className="text-slate-500 mb-2">
                             {searchQuery || filter !== 'all' ? 'No links match your filters' : 'No links created yet'}

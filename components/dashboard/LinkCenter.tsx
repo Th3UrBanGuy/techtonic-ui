@@ -85,60 +85,60 @@ const LinkCenter: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm"
+                    className="bg-white border border-slate-200 shadow-sm dark:bg-white/5 dark:border-white/10 rounded-xl p-5 backdrop-blur-sm"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 rounded-lg bg-cyan-500/20">
-                            <Link2 className="text-cyan-400" size={18} />
+                        <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-600 dark:bg-cyan-500/20 dark:text-cyan-400">
+                            <Link2 size={18} />
                         </div>
-                        <span className="text-slate-400 text-sm font-mono">TOTAL LINKS</span>
+                        <span className="text-slate-500 dark:text-slate-400 text-sm font-semibold dark:font-mono">TOTAL LINKS</span>
                     </div>
-                    <div className="text-3xl font-bold text-white">{totalLinks}</div>
+                    <div className="text-3xl font-bold text-slate-900 dark:text-white">{totalLinks}</div>
                 </motion.div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm"
+                    className="bg-white border border-slate-200 shadow-sm dark:bg-white/5 dark:border-white/10 rounded-xl p-5 backdrop-blur-sm"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 rounded-lg bg-emerald-500/20">
-                            <Zap className="text-emerald-400" size={18} />
+                        <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400">
+                            <Zap size={18} />
                         </div>
-                        <span className="text-slate-400 text-sm font-mono">ACTIVE</span>
+                        <span className="text-slate-500 dark:text-slate-400 text-sm font-semibold dark:font-mono">ACTIVE</span>
                     </div>
-                    <div className="text-3xl font-bold text-white">{activeLinks}</div>
+                    <div className="text-3xl font-bold text-slate-900 dark:text-white">{activeLinks}</div>
                 </motion.div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm"
+                    className="bg-white border border-slate-200 shadow-sm dark:bg-white/5 dark:border-white/10 rounded-xl p-5 backdrop-blur-sm"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 rounded-lg bg-purple-500/20">
-                            <BarChart3 className="text-purple-400" size={18} />
+                        <div className="p-2 rounded-lg bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400">
+                            <BarChart3 size={18} />
                         </div>
-                        <span className="text-slate-400 text-sm font-mono">TOTAL VISITS</span>
+                        <span className="text-slate-500 dark:text-slate-400 text-sm font-semibold dark:font-mono">TOTAL VISITS</span>
                     </div>
-                    <div className="text-3xl font-bold text-white">{totalVisits}</div>
+                    <div className="text-3xl font-bold text-slate-900 dark:text-white">{totalVisits}</div>
                 </motion.div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm"
+                    className="bg-white border border-slate-200 shadow-sm dark:bg-white/5 dark:border-white/10 rounded-xl p-5 backdrop-blur-sm"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 rounded-lg bg-amber-500/20">
-                            <BarChart3 className="text-amber-400" size={18} />
+                        <div className="p-2 rounded-lg bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400">
+                            <BarChart3 size={18} />
                         </div>
-                        <span className="text-slate-400 text-sm font-mono">AVG VISITS</span>
+                        <span className="text-slate-500 dark:text-slate-400 text-sm font-semibold dark:font-mono">AVG VISITS</span>
                     </div>
-                    <div className="text-3xl font-bold text-white">{avgVisits}</div>
+                    <div className="text-3xl font-bold text-slate-900 dark:text-white">{avgVisits}</div>
                 </motion.div>
             </div>
 

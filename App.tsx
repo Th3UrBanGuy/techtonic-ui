@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 // Layout
@@ -16,35 +16,13 @@ import Contact from './pages/Contact';
 import Dashboard from './pages/Dashboard';
 import Loader from './components/Loader'; // Kept if needed, but SystemStatusWrapper handles main load
 
+// Context
+import { ThemeProvider, useTheme } from './components/ThemeContext';
+
 const ContentWrapper = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const { theme, toggleTheme } = useTheme();
   const location = useLocation();
   const isDashboard = location.pathname === '/dashboard';
-
-  // Initialize theme based on preference or default to dark
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('techtonic-theme');
-    if (savedTheme === 'light') {
-      setTheme('light');
-      document.documentElement.classList.remove('dark');
-    } else {
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
-
-  // Toggle Handler
-  const toggleTheme = () => {
-    if (theme === 'dark') {
-      setTheme('light');
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('techtonic-theme', 'light');
-    } else {
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('techtonic-theme', 'dark');
-    }
-  };
 
   return (
     <SystemStatusWrapper>
@@ -69,10 +47,16 @@ const ContentWrapper = () => {
   );
 };
 
+import { ContentProvider } from './components/ContentContext';
+
 function App() {
   return (
     <HashRouter>
-      <ContentWrapper />
+      <ThemeProvider>
+        <ContentProvider>
+          <ContentWrapper />
+        </ContentProvider>
+      </ThemeProvider>
     </HashRouter>
   );
 }

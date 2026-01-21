@@ -306,10 +306,10 @@ export const COMPANY_CONTENT = {
     description: "Tectonic isn't just a company; it's a convergence of specialized intelligence. Founded on the belief that the future belongs to those who build it, we unify software, security, and robotics into a singular, evolutionary force."
   },
   stats: [
-    { label: "Founded", value: "2018" },
-    { label: "Global Offices", value: "12" },
-    { label: "Engineers", value: "450+" },
-    { label: "Patents", value: "84" }
+    { label: "Founded", value: "2025" },
+    { label: "Global Offices", value: "5" },
+    { label: "Engineers", value: "12+" },
+    { label: "Patents", value: "15" }
   ],
   mission: {
     title: "OUR MISSION",
