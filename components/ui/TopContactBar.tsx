@@ -48,27 +48,8 @@ const TopContactBar = () => {
                             </span>
                         </motion.a>
 
-                        {/* Center - TECHTONIC Branding */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5 }}
-                            className="absolute left-1/2 -translate-x-1/2"
-                        >
-                            <div className="flex items-center gap-2">
-                                <span className="text-lg sm:text-xl font-black tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-orange-400 font-mono">
-                                    TECT
-                                </span>
-                                <motion.div
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                    className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
-                                />
-                                <span className="text-lg sm:text-xl font-black tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-400 to-cyan-400 font-mono">
-                                    NIC
-                                </span>
-                            </div>
-                        </motion.div>
+
+
 
                         {/* Right Side - Email */}
                         <motion.a
