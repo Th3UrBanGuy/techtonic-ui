@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TEAM, COMPANY_CONTENT, COMPANY_ACHIEVEMENTS } from '../constants';
+import { TEAM, COMPANY_CONTENT, COMPANY_ACHIEVEMENTS, OPERATIVES } from '../constants';
 import { Linkedin, Award, ShieldCheck, Globe, Zap, Target, Users, Trophy } from 'lucide-react';
+import TeamMemberCard from '../components/ui/TeamMemberCard';
 
 const Company = () => {
     // Icon mapping for achievements
@@ -186,6 +187,36 @@ const Company = () => {
                             </motion.div>
                         ))}
                     </div>
+                </div>
+
+                {/* TEAM MEMBERS SECTION */}
+                <div className="mb-32">
+                    <div className="flex items-end justify-between mb-12 border-b border-slate-200 dark:border-gray-800 pb-4">
+                        <div>
+                            <h2 className="text-3xl font-mono font-bold text-slate-900 dark:text-white">OUR TEAM</h2>
+                            <p className="text-sm text-slate-600 dark:text-gray-400 mt-2">The brilliant minds making it all happen</p>
+                        </div>
+                        <div className="hidden md:block text-xs font-mono text-slate-500 dark:text-gray-500">
+                            // OPERATIVES // TEAM MEMBERS
+                        </div>
+                    </div>
+
+                    {/* Filter to show only Active members */}
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                        {OPERATIVES.filter(member => member.status === 'Active').map((member, i) => (
+                            <TeamMemberCard key={member.id} member={member} index={i} />
+                        ))}
+                    </div>
+
+                    {/* Show count */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        className="mt-8 text-center text-sm text-slate-500 dark:text-gray-500 font-mono"
+                    >
+                        {OPERATIVES.filter(m => m.status === 'Active').length} Active Team Members
+                    </motion.div>
                 </div>
 
                 {/* ACHIEVEMENTS SECTION */}

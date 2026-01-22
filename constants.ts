@@ -4,7 +4,7 @@ import {
   Layers, Cloud, Network, FlaskConical,
   Activity, CheckCircle2
 } from 'lucide-react';
-import { Wing, Project, TeamMember, Milestone, Partnership, TechStackItem, RoadmapItem } from './types';
+import { Wing, Project, TeamMember, Milestone, Partnership, TechStackItem, RoadmapItem, Operative } from './types';
 
 // =========================================
 // GLOBAL / SHARED ENTITIES
@@ -197,6 +197,82 @@ export const TEAM: TeamMember[] = [
     bio: 'Marketing, branding, growth',
     image: 'https://lh3.googleusercontent.com/pw/AP1GczOLQ8hlzOEeok3ToH61Zg6vwylLLPZAKOFSxmesyBfwz0Oy_XA6mELyhRp5xtqpBQil7v09kRpjv46RHyNDNyReNLDkhPR8Y-l8A_b0Ei7GbKtO4IJzB5LgfDR_jQkMLzNb3LIaJs2W5-vSdistHymJ2Q=w668-h842-s-no-gm?authuser=0',
     linkedin: 'https://www.linkedin.com/in/tahmidul-ahad'
+  }
+];
+
+export const OPERATIVES: Operative[] = [
+  {
+    id: 1,
+    name: 'Sarah Connor',
+    role: 'System Admin',
+    department: 'IT Operations',
+    email: 'sarah@nexus.com',
+    status: 'Active',
+    contacts: {
+      linkedin: 'https://linkedin.com/in/sarahconnor',
+      github: 'https://github.com/sconnor'
+    }
+  },
+  {
+    id: 2,
+    name: 'John Doe',
+    role: 'Developer',
+    department: 'Software Development',
+    email: 'john@nexus.com',
+    status: 'Active',
+    contacts: {
+      linkedin: 'https://linkedin.com/in/johndoe',
+      github: 'https://github.com/jdoe',
+      portfolio: 'https://johndoe.dev'
+    }
+  },
+  {
+    id: 3,
+    name: 'Jane Smith',
+    role: 'Designer',
+    department: 'Design & UX',
+    email: 'jane@nexus.com',
+    status: 'Offline',
+    contacts: {
+      linkedin: 'https://linkedin.com/in/janesmith',
+      portfolio: 'https://janesmith.design'
+    }
+  },
+  {
+    id: 4,
+    name: 'Mike Johnson',
+    role: 'Analyst',
+    department: 'Business Intelligence',
+    email: 'mike@nexus.com',
+    status: 'In Meeting',
+    contacts: {
+      linkedin: 'https://linkedin.com/in/mikejohnson'
+    }
+  },
+  {
+    id: 5,
+    name: 'Emily Davis',
+    role: 'Manager',
+    department: 'Project Management',
+    email: 'emily@nexus.com',
+    status: 'Active',
+    contacts: {
+      linkedin: 'https://linkedin.com/in/emilydavis',
+      twitter: 'https://twitter.com/emilydavis'
+    }
+  },
+  {
+    id: 6,
+    name: 'David Wilson',
+    role: 'Developer',
+    department: 'Software Development',
+    email: 'david@nexus.com',
+    status: 'Active',
+    contacts: {
+      linkedin: 'https://linkedin.com/in/davidwilson',
+      github: 'https://github.com/dwilson',
+      portfolio: 'https://davidwilson.io'
+    }
   }
 ];
 

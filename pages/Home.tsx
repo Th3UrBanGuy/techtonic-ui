@@ -201,8 +201,10 @@ const Home = () => {
               </div>
             ))}
           </motion.div>
+        </div>
 
-          {/* Partnership Carousel */}
+        {/* Partnership Carousel - Full Width */}
+        <div className="relative z-10">
           <InfinitePartnershipCarousel partners={PARTNERSHIPS} />
         </div>
       </section>

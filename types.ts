@@ -40,6 +40,22 @@ export interface TeamMember {
   linkedin: string;
 }
 
+export interface Operative {
+  id: number | string;
+  name: string;
+  role: string;
+  department: string;
+  email: string;
+  status: 'Active' | 'Offline' | 'In Meeting';
+  image?: string;
+  contacts?: {
+    linkedin?: string;
+    github?: string;
+    portfolio?: string;
+    twitter?: string;
+  };
+}
+
 export interface Milestone {
   year: string;
   title: string;

@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MoreHorizontal, Shield, Edit2, Trash2, X, Save, UserPlus } from 'lucide-react';
-
-const initialMembers = [
-    { id: 1, name: 'Sarah Connor', role: 'System Admin', email: 'sarah@nexus.com', status: 'Active' },
-    { id: 2, name: 'John Doe', role: 'Developer', email: 'john@nexus.com', status: 'Active' },
-    { id: 3, name: 'Jane Smith', role: 'Designer', email: 'jane@nexus.com', status: 'Offline' },
-    { id: 4, name: 'Mike Johnson', role: 'Analyst', email: 'mike@nexus.com', status: 'In Meeting' },
-    { id: 5, name: 'Emily Davis', role: 'Manager', email: 'emily@nexus.com', status: 'Active' },
-    { id: 6, name: 'David Wilson', role: 'Developer', email: 'david@nexus.com', status: 'Active' },
-];
+import { Mail, MoreHorizontal, Shield, Edit2, Trash2, X, Save, UserPlus, Briefcase } from 'lucide-react';
+import { OPERATIVES } from '../../constants';
 
 const MemberList = () => {
-    const [members, setMembers] = useState(initialMembers);
+    const [members, setMembers] = useState(OPERATIVES);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [editingMember, setEditingMember] = useState<any>(null);
 
-    const handleDelete = (id: number) => {
+    const handleDelete = (id: number | string) => {
         if (confirm('Are you sure you want to terminate this operative?')) {
             setMembers(members.filter(m => m.id !== id));
         }
@@ -97,9 +89,13 @@ const MemberList = () => {
                             </div>
 
                             <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">{member.name}</h3>
-                            <p className="text-sm text-cyan-600 dark:text-cyan-500/80 mb-4 flex items-center gap-1 font-mono">
+                            <p className="text-sm text-cyan-600 dark:text-cyan-500/80 mb-1 flex items-center gap-1 font-mono">
                                 <Shield size={12} />
                                 {member.role.toUpperCase()}
+                            </p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-1">
+                                <Briefcase size={10} />
+                                {member.department}
                             </p>
 
                             <div className="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5">
@@ -171,6 +167,23 @@ const MemberList = () => {
                                     />
                                 </div>
                                 <div>
+                                    <label className="block text-xs font-mono text-cyan-600 dark:text-cyan-500/60 mb-1">DEPARTMENT</label>
+                                    <select
+                                        value={editingMember.department}
+                                        onChange={(e) => setEditingMember({ ...editingMember, department: e.target.value })}
+                                        className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
+                                    >
+                                        <option value="Software Development">Software Development</option>
+                                        <option value="Robotics">Robotics</option>
+                                        <option value="IT Operations">IT Operations</option>
+                                        <option value="Design & UX">Design & UX</option>
+                                        <option value="Business Intelligence">Business Intelligence</option>
+                                        <option value="Project Management">Project Management</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="HR">HR</option>
+                                    </select>
+                                </div>
+                                <div>
                                     <label className="block text-xs font-mono text-cyan-600 dark:text-cyan-500/60 mb-1">EMAIL</label>
                                     <input
                                         type="email"
@@ -179,6 +192,66 @@ const MemberList = () => {
                                         className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
                                     />
                                 </div>
+
+                                {/* Contact Links Section */}
+                                <div className="col-span-2 mt-4 pt-4 border-t border-slate-200 dark:border-white/10">
+                                    <label className="block text-xs font-mono text-cyan-600 dark:text-cyan-500/60 mb-3">CONTACT LINKS (Optional)</label>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <div>
+                                            <label className="block text-xs text-slate-500 dark:text-slate-400 mb-1">LinkedIn</label>
+                                            <input
+                                                type="url"
+                                                value={editingMember.contacts?.linkedin || ''}
+                                                onChange={(e) => setEditingMember({
+                                                    ...editingMember,
+                                                    contacts: { ...editingMember.contacts, linkedin: e.target.value }
+                                                })}
+                                                placeholder="https://linkedin.com/in/..."
+                                                className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-white/10 rounded-lg px-3 py-2 text-sm text-slate-900 dark:text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs text-slate-500 dark:text-slate-400 mb-1">GitHub</label>
+                                            <input
+                                                type="url"
+                                                value={editingMember.contacts?.github || ''}
+                                                onChange={(e) => setEditingMember({
+                                                    ...editingMember,
+                                                    contacts: { ...editingMember.contacts, github: e.target.value }
+                                                })}
+                                                placeholder="https://github.com/..."
+                                                className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-white/10 rounded-lg px-3 py-2 text-sm text-slate-900 dark:text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs text-slate-500 dark:text-slate-400 mb-1">Portfolio</label>
+                                            <input
+                                                type="url"
+                                                value={editingMember.contacts?.portfolio || ''}
+                                                onChange={(e) => setEditingMember({
+                                                    ...editingMember,
+                                                    contacts: { ...editingMember.contacts, portfolio: e.target.value }
+                                                })}
+                                                placeholder="https://yourportfolio.com"
+                                                className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-white/10 rounded-lg px-3 py-2 text-sm text-slate-900 dark:text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs text-slate-500 dark:text-slate-400 mb-1">Twitter</label>
+                                            <input
+                                                type="url"
+                                                value={editingMember.contacts?.twitter || ''}
+                                                onChange={(e) => setEditingMember({
+                                                    ...editingMember,
+                                                    contacts: { ...editingMember.contacts, twitter: e.target.value }
+                                                })}
+                                                placeholder="https://twitter.com/..."
+                                                className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-white/10 rounded-lg px-3 py-2 text-sm text-slate-900 dark:text-white focus:border-cyan-500/50 focus:outline-none transition-colors"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div>
                                     <label className="block text-xs font-mono text-cyan-600 dark:text-cyan-500/60 mb-1">STATUS</label>
                                     <select

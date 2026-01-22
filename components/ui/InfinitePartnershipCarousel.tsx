@@ -13,7 +13,7 @@ const InfinitePartnershipCarousel: React.FC<InfinitePartnershipCarouselProps> = 
     return (
         <div className="w-full py-6 sm:py-12">
             {/* Glass Border Container */}
-            <div className="relative mx-auto max-w-7xl">
+            <div className="relative w-full">
                 {/* Top Glass Border */}
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300 dark:via-gray-700/50 to-transparent" />
 
