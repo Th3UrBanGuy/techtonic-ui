@@ -26,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   }, [location]);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-slate-200 dark:border-white/5 py-4 shadow-sm dark:shadow-none' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed w-full top-12 z-40 transition-all duration-500 ${scrolled ? 'bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-slate-200 dark:border-white/5 py-4 shadow-sm dark:shadow-none' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
         {/* Logo - Anchored Left */}
         <Link to="/" className="flex items-center group relative z-20">

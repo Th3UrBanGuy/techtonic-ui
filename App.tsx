@@ -5,6 +5,7 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import SystemStatusWrapper from './components/SystemStatusWrapper';
+import TopContactBar from './components/ui/TopContactBar';
 
 // Pages
 import Home from './pages/Home';
@@ -27,6 +28,7 @@ const ContentWrapper = () => {
   return (
     <SystemStatusWrapper>
       <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white dark:bg-dark-bg dark:text-gray-100 transition-colors duration-500">
+        {!isDashboard && <TopContactBar />}
         {!isDashboard && <Navbar theme={theme} toggleTheme={toggleTheme} />}
         {/* Added flex-grow to ensure footer pushes down and pt-0 to allow hero sections to touch top if needed, 
             but ensured z-index layering is correct */}
