@@ -48,52 +48,25 @@ const TopContactBar = () => {
                             </span>
                         </motion.a>
 
-                        {/* Center - TECHTONIC Branding - Professional */}
+                        {/* Center - TECHTONIC Branding */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.6 }}
+                            transition={{ duration: 0.5 }}
                             className="absolute left-1/2 -translate-x-1/2"
                         >
-                            <div className="relative px-6 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10">
-                                {/* Animated Glow */}
+                            <div className="flex items-center gap-2">
+                                <span className="text-lg sm:text-xl font-black tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-orange-400 font-mono">
+                                    TECT
+                                </span>
                                 <motion.div
-                                    className="absolute inset-0 rounded-full opacity-50"
-                                    animate={{
-                                        boxShadow: [
-                                            '0 0 20px rgba(6, 182, 212, 0.3)',
-                                            '0 0 30px rgba(139, 92, 246, 0.3)',
-                                            '0 0 20px rgba(6, 182, 212, 0.3)',
-                                        ],
-                                    }}
-                                    transition={{
-                                        duration: 3,
-                                        repeat: Infinity,
-                                        ease: 'easeInOut',
-                                    }}
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                    className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
                                 />
-
-                                <div className="relative flex flex-col items-center">
-                                    {/* Main Logo */}
-                                    <div className="flex items-center gap-1.5">
-                                        <span className="text-xl sm:text-2xl font-black tracking-[0.15em] text-white font-mono drop-shadow-[0_0_10px_rgba(6,182,212,0.5)]">
-                                            TECT
-                                        </span>
-                                        <motion.div
-                                            animate={{ rotate: 360 }}
-                                            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                                            className="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)]"
-                                        />
-                                        <span className="text-xl sm:text-2xl font-black tracking-[0.15em] text-white font-mono drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]">
-                                            NIC
-                                        </span>
-                                    </div>
-
-                                    {/* Tagline */}
-                                    <div className="hidden sm:block text-[7px] font-mono font-bold tracking-[0.3em] text-cyan-400/80 mt-0.5 uppercase">
-                                        Architecting Tomorrow
-                                    </div>
-                                </div>
+                                <span className="text-lg sm:text-xl font-black tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-400 to-cyan-400 font-mono">
+                                    NIC
+                                </span>
                             </div>
                         </motion.div>
 
